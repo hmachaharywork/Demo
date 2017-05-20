@@ -72,8 +72,7 @@ class Home extends Component {
   // Goto BestInTown
   //
   gotoBestInTownHome(id, title){
-    this.props.navigator.push({
-      id:'best-in-town-home',
+    this.props.navigation.navigate('BestInTown', {
       bestId:id,
       title:title
     })
@@ -100,8 +99,7 @@ class Home extends Component {
   // Go to list of cuines
   //
   gotoCuisineHome(id,cuisine){
-    this.props.navigator.push({
-      id:'cuisine-home',
+    this.props.navigation.navigate('Cuisine', {
       cuisineId:id,
       cuisine:cuisine
     })

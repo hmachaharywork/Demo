@@ -9,6 +9,8 @@ import TableHome from '../components/tablereservation'
 import Orders from '../components/orders';
 import Profile from '../components/profile';
 import Notification from '../components/notification';
+import BestInTown from '../components/foodordering/bestintown/bestintownList';
+import CuisineList from '../components/foodordering/cuisines/cuisinesList';
 
 
 const DrawerIcon = ({navigation}) => {
@@ -31,7 +33,19 @@ export const FoodStack = StackNavigator({
       headerLeft: (<DrawerIcon {...props} />),
       headerMode: 'screen'
     }),
-  }
+  },
+  BestInTown: {
+    screen: BestInTown,
+    navigationOptions: ({navigation}) => ({
+      title: `${navigation.state.params.title}`,
+    }),
+  },
+  Cuisine: {
+    screen: CuisineList,
+    navigationOptions: ({navigation}) => ({
+      title: `${navigation.state.params.cuisine}`,
+    }),
+  },
 });
 
 export const EcomStack = StackNavigator({
