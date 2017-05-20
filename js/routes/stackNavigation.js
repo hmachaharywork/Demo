@@ -11,12 +11,24 @@ import Profile from '../components/profile';
 import Notification from '../components/notification';
 
 
+const DrawerIcon = ({navigation}) => {
+  return(
+    <Icon name="ios-menu-outline"
+      size={24}
+      color="#000"
+      style={{padding: 20}}
+      onPress={() => navigation.navigate('DrawerOpen')}
+    />
+  );
+}
+
 export const FoodStack = StackNavigator({
   FoodHome: {
     screen: FoodHome,
     navigationOptions: (props) => ({
       title: 'Food Ordering',
       initialRouteName: 'FoodHome',
+      headerLeft: (<DrawerIcon {...props} />),
       headerMode: 'screen'
     }),
   }
@@ -28,6 +40,7 @@ export const EcomStack = StackNavigator({
     navigationOptions: (props) => ({
       title: 'CityOra Shop',
       initialRouteName: 'EcomHome',
+      headerLeft: (<DrawerIcon {...props} />),
       headerMode: 'screen'
     }),
   }
@@ -39,6 +52,7 @@ export const TableStack = StackNavigator({
     navigationOptions: (props) => ({
       title: 'Table Reservation',
       initialRouteName: 'TableHome',
+      headerLeft: (<DrawerIcon {...props} />),
       headerMode: 'screen'
     }),
   }
@@ -50,6 +64,7 @@ export const OrdersStack = StackNavigator({
     navigationOptions: (props) => ({
       title: 'Orders',
       initialRouteName: 'Orders',
+      headerLeft: (<DrawerIcon {...props} />),
       headerMode: 'screen'
     }),
   }
@@ -61,6 +76,7 @@ export const ProfileStack = StackNavigator({
     navigationOptions: (props) => ({
       title: 'Profile',
       initialRouteName: 'Profile',
+      headerLeft: (<DrawerIcon {...props} />),
       headerMode: 'screen'
     }),
   }
@@ -72,6 +88,7 @@ export const NotificationStack = StackNavigator({
     navigationOptions: (props) => ({
       title: 'Notifications',
       initialRouteName: 'Notification',
+      headerLeft: (<DrawerIcon {...props} />),
       headerMode: 'screen'
     }),
   }
