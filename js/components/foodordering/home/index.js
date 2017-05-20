@@ -118,8 +118,8 @@ class Home extends Component {
   // Go to Cart
   //
   gotoRestroList(){
-    this.props.navigator.push({
-      id:'restro-list',
+    this.props.navigation.navigate('AllRestro', {
+      title: 'List of restaurants'
     })
   }
 

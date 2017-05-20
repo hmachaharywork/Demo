@@ -23,10 +23,6 @@ class bestintownList extends Component {
 
   render() {
     const { bestRestro, isInit, isFetching } = this.props.bestintown;
-    //const bestintown = this.props.bestintown;
-    // const bestId = this.props.navigation.state;
-    // console.log("render function" , bestId);
-    //console.log(bestintown);
     return(
       <RestroList restroData={bestRestro} isInit={isInit} isFetching={isFetching} />
     );

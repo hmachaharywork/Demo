@@ -11,6 +11,7 @@ import Profile from '../components/profile';
 import Notification from '../components/notification';
 import BestInTown from '../components/foodordering/bestintown/bestintownList';
 import CuisineList from '../components/foodordering/cuisines/cuisinesList';
+import RestroListing from '../components/foodordering/restrolist/';
 
 
 const DrawerIcon = ({navigation}) => {
@@ -44,6 +45,12 @@ export const FoodStack = StackNavigator({
     screen: CuisineList,
     navigationOptions: ({navigation}) => ({
       title: `${navigation.state.params.cuisine}`,
+    }),
+  },
+  AllRestro: {
+    screen: RestroListing,
+    navigationOptions: ({navigation}) => ({
+      title: `${navigation.state.params.title}`,
     }),
   },
 });
