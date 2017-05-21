@@ -98,7 +98,7 @@ export const TableTabs = TabNavigator({
     screen: TableStack,
     navigationOptions: {
       tabBarLabel: 'Home',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-home-outline" size={24} color={tintColor}
+      tabBarIcon: ({tintColor}) => <Icon name="home" size={24} color={tintColor}
         style={{ margin: 0, padding: 0}}
       />,
     },
@@ -107,7 +107,7 @@ export const TableTabs = TabNavigator({
     screen: OrdersStack,
     navigationOptions: {
       tabBarLabel: 'Orders',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-cart-outline" size={24} color={tintColor}
+      tabBarIcon: ({tintColor}) => <Icon name="shopping-cart" size={24} color={tintColor}
         style={{ margin: 0, padding: 0}}
       />,
     },
@@ -116,7 +116,7 @@ export const TableTabs = TabNavigator({
     screen: ProfileStack,
     navigationOptions: {
       tabBarLabel: 'Profile',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-contact-outline" size={24} color={tintColor}
+      tabBarIcon: ({tintColor}) => <Icon name="person" size={24} color={tintColor}
         style={{ margin: 0, padding: 0}}
       />,
     },
@@ -125,7 +125,7 @@ export const TableTabs = TabNavigator({
     screen: NotificationStack,
     navigationOptions: {
       tabBarLabel: 'Notification',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-notifications-outline" size={24} color={tintColor}
+      tabBarIcon: ({tintColor}) => <Icon name="notifications" size={24} color={tintColor}
         style={{ margin: 0, padding: 0}}
       />
     },
@@ -157,7 +157,7 @@ export const EcomTabs = TabNavigator({
     screen: EcomStack,
     navigationOptions: {
       tabBarLabel: 'Home',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-home-outline" size={24} color={tintColor}
+      tabBarIcon: ({tintColor}) => <Icon name="home" size={24} color={tintColor}
         style={{ margin: 0, padding: 0}}
       />,
     },
@@ -166,7 +166,7 @@ export const EcomTabs = TabNavigator({
     screen: OrdersStack,
     navigationOptions: {
       tabBarLabel: 'Orders',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-cart-outline" size={24} color={tintColor}
+      tabBarIcon: ({tintColor}) => <Icon name="shopping-cart" size={24} color={tintColor}
         style={{ margin: 0, padding: 0}}
       />,
     },
@@ -175,7 +175,7 @@ export const EcomTabs = TabNavigator({
     screen: ProfileStack,
     navigationOptions: {
       tabBarLabel: 'Profile',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-contact-outline" size={24} color={tintColor}
+      tabBarIcon: ({tintColor}) => <Icon name="person" size={24} color={tintColor}
         style={{ margin: 0, padding: 0}}
       />,
     },
@@ -184,7 +184,7 @@ export const EcomTabs = TabNavigator({
     screen: NotificationStack,
     navigationOptions: {
       tabBarLabel: 'Notification',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-notifications-outline" size={24} color={tintColor}
+      tabBarIcon: ({tintColor}) => <Icon name="notifications" size={24} color={tintColor}
         style={{ margin: 0, padding: 0}}
       />
     },
