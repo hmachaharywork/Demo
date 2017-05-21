@@ -137,7 +137,14 @@ resultObjectView:{
   margin:5,
   backgroundColor: "#fff",
   borderRadius: 5,
-  padding:10
+  padding:10,
+  shadowColor: '#757575',
+  shadowOffset: {
+    width: 0,
+    height: 2
+  },
+  shadowRadius: 2,
+  shadowOpacity: .8
 },
 listviewContainer:{
   padding:5,

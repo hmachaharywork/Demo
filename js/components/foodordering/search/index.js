@@ -129,7 +129,6 @@ class Search extends Component {
         <View style={styles.centered}>
           <Image
             style={{width:200, height: 200}}
-            // style={styles.userPicStyle}
             source={require('../../../assets/search-not-found.png')}
             />
           <Text style={styles.centeredText}>Oops! We didn't get a match to your taste</Text>
@@ -151,11 +150,6 @@ class Search extends Component {
             underlineColorAndroid='rgba(0,0,0,0)'
             // onFocus={()=>this.setState({text:''})}
           />
-          <TouchableOpacity
-            style={styles.filterButton}
-            >
-            <Icon name={"search"} style={{fontSize:22, color:'#fff'}}/>
-          </TouchableOpacity>
         </View>
         <ScrollView style={styles.listviewContainer}>
         {
