@@ -89,7 +89,7 @@ module.exports = StyleSheet.create({
   offersCarousel:{
     height:220,
     width: width,
-    marginTop:10,
+    //marginTop:10,
   },
   dotStyle:{
     backgroundColor: 'rgba(0,0,0,.1)',
@@ -145,14 +145,26 @@ module.exports = StyleSheet.create({
 
   },
   cards:{
-    margin:0.5,
-    width:width/2,
+    //margin:0.5,
+    width:width/1.7,
     height:130,
     justifyContent:'center',
   },
+  cardBlock:{
+    width:width/1.7,
+    margin: 3,
+    justifyContent:'center',
+    shadowColor: '#757575',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowRadius: 2,
+    shadowOpacity: .8,
+  },
   cards2:{
-    margin:0.5,
-    width:width/2,
+    //margin:2,
+    width:width/1.7,
     height:130,
     justifyContent:'center',
   },

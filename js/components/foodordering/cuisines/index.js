@@ -42,19 +42,21 @@ class Cuisines extends Component {
         {
           cuisine.cuisines.map((item, index)=>{
             return (
-              <TouchableOpacity
-                key={index}
-                onPress={()=>this.props.gotoCuisineHome(item.id,item.cuisine)}
-              >
-                <Image
-                  style={styles.cards2}
-                  source={{uri: `${item.avatar}`}}
-                  >
-                  <View style={[styles.cards2, {backgroundColor:'rgba(0,0,0,0.5)'}]}>
-                    <Text style={[styles.headerDishes,styles.italicText]}>{item.cuisine}</Text>
-                  </View>
-                </Image>
-              </TouchableOpacity>
+              <View key={index} style={styles.cardBlock}>
+                <TouchableOpacity
+
+                  onPress={()=>this.props.gotoCuisineHome(item.id,item.cuisine)}
+                >
+                  <Image
+                    style={styles.cards2}
+                    source={{uri: `${item.avatar}`}}
+                    >
+                    <View style={[styles.cards2, {backgroundColor:'rgba(0,0,0,0.5)'}]}>
+                      <Text style={[styles.headerDishes,styles.italicText]}>{item.cuisine}</Text>
+                    </View>
+                  </Image>
+                </TouchableOpacity>
+              </View>
             )
           })
         }

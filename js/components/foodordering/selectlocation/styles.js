@@ -52,14 +52,15 @@ module.exports = StyleSheet.create({
   },
   autocompleteTextInput:{
     height:50,
-    borderRadius: 0,
+    borderRadius: 2,
+
     shadowColor: '#757575',
     shadowOffset: {
       width: 0,
       height: 2
     },
     shadowRadius: 2,
-    shadowOpacity: .8
+    shadowOpacity: .8,
   },
   listView:{
 

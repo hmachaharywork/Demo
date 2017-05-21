@@ -43,20 +43,23 @@ class BestInTown extends Component {
     return array.map((item, index)=>{
       const title = item.title.split(' ');
       return(
+        <View key={index} style={styles.cardBlock}>
         <TouchableOpacity
-          key={index}
           onPress={()=>this.props.gotoBestInTownHome(item.id, item.title)}
         >
-          <Image
-            style={styles.cards2}
-            source={{uri: `${item.avatar}`}}
-            >
-            <View style={[styles.cards2, {backgroundColor:'rgba(0,0,0,0.5)'}]}>
-              <Text style={[styles.headerDishes,styles.italicText]}>{title[0]}</Text>
-              <Text style={[styles.headerDishes,styles.italicText]}>{title[1]}</Text>
-            </View>
-          </Image>
+
+            <Image
+              style={styles.cards2}
+              source={{uri: `${item.avatar}`}}
+              >
+              <View style={[styles.cards2, {backgroundColor:'rgba(0,0,0,0.4)'}]}>
+                <Text style={[styles.headerDishes,styles.italicText]}>{title[0]}</Text>
+                <Text style={[styles.headerDishes,styles.italicText]}>{title[1]}</Text>
+              </View>
+            </Image>
+
         </TouchableOpacity>
+        </View>
       );
     })
   }

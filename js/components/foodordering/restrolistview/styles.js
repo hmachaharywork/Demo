@@ -1,10 +1,10 @@
 import { StyleSheet, Platform, Dimensions } from 'react-native';
 
-const extraTopMargin = Platform.OS === "ios" ? 20 : 0;
+//const extraTopMargin = Platform.OS === "ios" ? 20 : 0;
 const { width, height } = Dimensions.get("window");
 module.exports = StyleSheet.create({
   container: {
-    marginTop:extraTopMargin,
+    //marginTop:extraTopMargin,
     flex: 1,
     backgroundColor:'transparent',
   },

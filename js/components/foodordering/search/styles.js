@@ -9,6 +9,7 @@ module.exports = StyleSheet.create({
     marginTop:10,
     backgroundColor: '#fff',
     flexDirection: "row",
+    borderRadius: 2,
     marginLeft: 10,
     marginRight: 10,
     shadowColor: '#757575',
@@ -19,8 +20,9 @@ module.exports = StyleSheet.create({
     shadowRadius: 2,
     shadowOpacity: .8
   },
-  
+
   textInput: {
+    borderRadius: 2,
     padding:10,
     color:'#757575',
     fontSize:16,

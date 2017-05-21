@@ -61,32 +61,33 @@ class Restaurants extends Component {
               const url = imgUrl[0].concat(imgUrl[1]);
               const distance = Math.round(item.distance * 100) / 100;
               return (
-                <TouchableOpacity
-                  key={index}
-                  onPress={()=>this.props.gotoRestroHome(item.id,item.name,item.menu,url,status)}
-                >
-                  <Image
-                    source={{uri: `${url}`}}
-                    resizeMode={'stretch'}
-                    style={styles.cards}
-                    >
-                    <View style={[styles.cards, {backgroundColor:'rgba(0,0,0,0.5)'}]}>
-                      <Text style={[styles.restaurantName,styles.italicText]}>{item.name}</Text>
-                      <View style={styles.restaurantBrief}>
-                        <View style={styles.restaurantDistance}>
-                          <Text style={[{fontStyle :'italic'},{color:'#fff', fontSize: 12}]}>{distance} kms</Text>
-                        </View>
-                        {
-                          item.rating !== null
-                          &&
-                          <View style={styles.restaurantRating}>
-                            <Text style={{color:'#fff', fontWeight: '600', fontSize: 13}}>{item.rating.avg_rating}</Text>
+                <View key={index} style={styles.cardBlock}>
+                  <TouchableOpacity
+                    onPress={()=>this.props.gotoRestroHome(item.id,item.name,item.menu,url,status)}
+                  >
+                    <Image
+                      source={{uri: `${url}`}}
+                      resizeMode={'stretch'}
+                      style={styles.cards}
+                      >
+                      <View style={[styles.cards, {backgroundColor:'rgba(0,0,0,0.5)'}]}>
+                        <Text style={[styles.restaurantName,styles.italicText]}>{item.name}</Text>
+                        <View style={styles.restaurantBrief}>
+                          <View style={styles.restaurantDistance}>
+                            <Text style={[{fontStyle :'italic'},{color:'#fff', fontSize: 12}]}>{distance} kms</Text>
                           </View>
-                        }
+                          {
+                            item.rating !== null
+                            &&
+                            <View style={styles.restaurantRating}>
+                              <Text style={{color:'#fff', fontWeight: '600', fontSize: 13}}>{item.rating.avg_rating}</Text>
+                            </View>
+                          }
+                        </View>
                       </View>
-                    </View>
-                  </Image>
-                </TouchableOpacity>
+                    </Image>
+                  </TouchableOpacity>
+                </View>
               )
             })
           }

@@ -25,7 +25,7 @@ class bestintownList extends Component {
     const { bestRestro, isInit, isFetching } = this.props.bestintown;
     const { navigation } = this.props;
     return(
-      <RestroList navigation={navigation} restroData={bestRestro} isInit={isInit} isFetching={isFetching} />
+        <RestroList navigation={navigation} restroData={bestRestro} isInit={isInit} isFetching={isFetching} />
     );
   }
 }
