@@ -41,8 +41,8 @@ const options = {
   drawerWidth: 300,
   contentComponent: SideDrawer,
   contentOptions: {
-    activeTintColor: '#4DD1A5',
-    inactiveTintColor: '#AAADAC',
+    activeTintColor: '#0ACED4',
+    inactiveTintColor: '#757575',
     activeBackgroundColor: '#ffffff'
   }
 };

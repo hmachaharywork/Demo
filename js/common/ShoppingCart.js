@@ -43,6 +43,7 @@ const styles = {
     alignItems: 'center',
     position: "relative",
     padding: 20,
+    paddingRight: 10,
   },
   iconStyle:{
     fontSize: 32,

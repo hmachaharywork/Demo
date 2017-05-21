@@ -1,6 +1,6 @@
 import React from 'react';
 import { TabNavigator, TabBarBottom, NavigationActions } from 'react-navigation';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 /***************** Component imports ****************/
 import { FoodStack, EcomStack, TableStack, OrdersStack, ProfileStack, NotificationStack } from './stackNavigation';
@@ -11,7 +11,7 @@ export const FoodTabs = TabNavigator({
     screen: FoodStack,
     navigationOptions: {
       tabBarLabel: 'Home',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-home-outline" size={24} color={tintColor}
+      tabBarIcon: ({tintColor}) => <Icon name="home" size={24} color={tintColor}
         style={{ margin: 0, padding: 0}}
       />,
     },
@@ -20,7 +20,7 @@ export const FoodTabs = TabNavigator({
     screen: OrdersStack,
     navigationOptions: {
       tabBarLabel: 'Orders',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-cart-outline" size={24} color={tintColor}
+      tabBarIcon: ({tintColor}) => <Icon name="shopping-cart" size={24} color={tintColor}
         style={{ margin: 0, padding: 0}}
       />,
     },
@@ -29,7 +29,7 @@ export const FoodTabs = TabNavigator({
     screen: ProfileStack,
     navigationOptions: {
       tabBarLabel: 'Profile',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-contact-outline" size={24} color={tintColor}
+      tabBarIcon: ({tintColor}) => <Icon name="person" size={24} color={tintColor}
         style={{ margin: 0, padding: 0}}
       />,
     },
@@ -38,7 +38,7 @@ export const FoodTabs = TabNavigator({
     screen: NotificationStack,
     navigationOptions: {
       tabBarLabel: 'Notification',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-notifications-outline" size={24} color={tintColor}
+      tabBarIcon: ({tintColor}) => <Icon name="notifications" size={24} color={tintColor}
         style={{ margin: 0, padding: 0}}
       />
     },
@@ -67,12 +67,12 @@ export const FoodTabs = TabNavigator({
   tabBarPosition: 'bottom',
   swipeEnabled: false,
   tabBarOptions: {
-    activeTintColor: '#4DD1A5',
-    inactiveTintColor: '#AAADAC',
+    activeTintColor: '#0ACED4',
+    inactiveTintColor: '#757575',
     upperCaseLabel: false,
     showIcon: true,
     style: {
-      backgroundColor: '#ffffff',
+      backgroundColor: '#fff',
       margin: 0,
       padding: 0,
     },

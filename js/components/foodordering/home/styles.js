@@ -25,7 +25,8 @@ module.exports = StyleSheet.create({
     color: '#757575',
   },
   midTopbar:{
-    flex:0.7,
+    padding: 20,
+    //flex:0.7,
     alignItems:'center',
     flexDirection: 'row',
     // justifyContent: 'center',
@@ -54,18 +55,34 @@ module.exports = StyleSheet.create({
   scrollbar:{
     flex:0.9,
   },
-  searchBox: {
-    marginTop:10,
-    width:width,
-    height:50,
-    backgroundColor: '#fff',
+  searchBox:{
+    flexDirection: 'row',
+    borderRadius: 20,
+    backgroundColor: '#F8F8F8',
+    overflow: 'hidden',
+  },
+  navInput:{
+    alignSelf: 'center',
+    justifyContent: 'center',
+    marginLeft: 5,
+    marginRight: 10,
+  },
+  navigationIcon : {
+    fontSize: 18,
+    color: '#757575',
+  },
+  searchInput:{
+    flexDirection: 'row',
     alignSelf: "center",
-    justifyContent: "center"
+  },
+  searchIcon: {
+    paddingLeft: 5,
+    paddingTop: 8,
+    color:'#757575',
+    fontSize:20,
   },
   searchBoxText:{
-    padding:10,
-    paddingLeft:16,
-    // fontSize:16,
+    padding:8,
     color:'#757575',
     fontSize:16,
   },

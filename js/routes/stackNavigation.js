@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 /***************** Component imports ************************/
 import FoodHome from '../components/foodordering/home';
@@ -14,28 +14,61 @@ import BestInTown from '../components/foodordering/bestintown/bestintownList';
 import CuisineList from '../components/foodordering/cuisines/cuisinesList';
 import RestroListing from '../components/foodordering/restrolist/';
 import RestaurantHome from '../components/foodordering/restrohome/';
-import { ShoppingCart } from '../common/';
+import Search from '../components/foodordering/search';
+import SelectLocation from '../components/foodordering/selectlocation';
+
 
 const DrawerIcon = ({navigation}) => {
   return(
-    <Icon name="ios-menu-outline"
+    <Icon name="menu"
       size={24}
-      color="#000"
-      style={{padding: 20}}
+      color="#757575"
+      style={{padding: 20, paddingLeft: 10, paddingRight: 10}}
       onPress={() => navigation.navigate('DrawerOpen')}
     />
   );
 }
 
+const headerStyleOptions = {
+  backgroundColor: '#fff',
+  shadowColor: 'transparent',
+  //paddingTop: 20,
+  shadowRadius: 0,
+  shadowOffset: {
+      height: 0,
+  }
+}
+
+
 export const FoodStack = StackNavigator({
   FoodHome: {
     screen: FoodHome,
     navigationOptions: (props) => ({
-      title: 'Food Ordering',
       initialRouteName: 'FoodHome',
+      headerStyle: headerStyleOptions,
+      headerTintColor: '#757575',
       headerLeft: (<DrawerIcon {...props} />),
-      //headerRight: (<ShoppingCart />),
       headerMode: 'screen',
+      headerBackTitle: null,
+    }),
+  },
+  Location: {
+    screen: SelectLocation,
+    navigationOptions: ({navigation}) => ({
+      title: 'Select Location',
+      headerStyle: headerStyleOptions,
+      headerMode: 'screen',
+      headerTintColor: '#757575',
+      headerBackTitle: null,
+    }),
+  },
+  Search: {
+    screen: Search,
+    navigationOptions: ({navigation}) => ({
+      title: 'Search',
+      headerStyle: headerStyleOptions,
+      headerMode: 'screen',
+      headerTintColor: '#757575',
       headerBackTitle: null,
     }),
   },
@@ -43,6 +76,8 @@ export const FoodStack = StackNavigator({
     screen: BestInTown,
     navigationOptions: ({navigation}) => ({
       title: `${navigation.state.params.title}`,
+      headerStyle: headerStyleOptions,
+      headerTintColor: '#757575',
       headerMode: 'screen',
       headerBackTitle: null,
     }),
@@ -51,7 +86,9 @@ export const FoodStack = StackNavigator({
     screen: CuisineList,
     navigationOptions: ({navigation}) => ({
       title: `${navigation.state.params.cuisine}`,
-      headerBackTitle: '',
+      headerStyle: headerStyleOptions,
+      headerTintColor: '#757575',
+      headerMode: 'screen',
       headerBackTitle: null,
     }),
   },
@@ -59,7 +96,9 @@ export const FoodStack = StackNavigator({
     screen: RestroListing,
     navigationOptions: ({navigation}) => ({
       title: `${navigation.state.params.title}`,
-      headerBackTitle: '',
+      headerStyle: headerStyleOptions,
+      headerMode: 'screen',
+      headerTintColor: '#757575',
       headerBackTitle: null,
     }),
   },
@@ -67,7 +106,9 @@ export const FoodStack = StackNavigator({
     screen: RestaurantHome,
     navigationOptions: ({navigation}) => ({
       title: `${navigation.state.params.name}`,
-      headerBackTitle: '',
+      headerStyle: headerStyleOptions,
+      headerTintColor: '#757575',
+      headerMode: 'screen',
       headerBackTitle: null,
     }),
   },

@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Text, Image, View, TouchableOpacity, ScrollView, InteractionManager } from 'react-native';
 import Icon from "react-native-vector-icons/MaterialIcons";
-//import { openDrawer } from '../../actions/sidebar';
 import { ShoppingCart } from "../../../common/";
 import { fetchCuisines, fetchRestaurant, fetchBestInTown, fectchBanners } from '../../../actions/homepage';
 import Cuisines from '../cuisines';
 import NewAndHot from '../newandhot';
 import BestInTown from '../bestintown';
 import Banner from '../banner';
-//import Search from '../SearchApp/';
+import Search from '../search/';
 import styles from './styles';
 
 
@@ -24,11 +23,27 @@ class Home extends Component {
     }
   }
 
-  static navigationOptions = ({navigation, cartSize}) => ({
-
+  static navigationOptions = ({location, navigation, cartSize}) => ({
+    headerTitle: (
+      <View style={styles.searchBox}>
+        <TouchableOpacity
+          style={styles.searchInput}
+          onPress={() => navigation.navigate('Search')}
+          >
+            <Icon name="search" style={styles.searchIcon} />
+            <Text style={styles.searchBoxText}>Search cuisines, restaurants</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.navInput}
+          onPress={() => navigation.navigate('Location')}
+          >
+            <Icon name="navigation" style={styles.navigationIcon} />
+        </TouchableOpacity>
+      </View>
+    ),
     headerRight: (<ShoppingCart
       navigation={navigation}
-      onCartClick={()=>this.gotoCartHome()}
+      onCartClick={()=>navigation.navigate('Cart')}
       numberOfItemsInCart={cartSize}
     />),
   })
@@ -64,19 +79,19 @@ class Home extends Component {
         number:0
       })
     }
-    // if (props.location) {
-    //   const locationText = props.location.name.split(',')
-    //   const locationConcatText = locationText[0]+','+locationText[1];
-    //   if (locationConcatText.length < 26) {
-    //     this.setState({
-    //       location:locationConcatText  ,
-    //     })
-    //   }else {
-    //     this.setState({
-    //       location:locationConcatText.slice(0, 25)+' ...' ,
-    //     })
-    //   }
-    // }
+    if (props.location) {
+      const locationText = props.location.name.split(',')
+      const locationConcatText = locationText[0]+','+locationText[1];
+      if (locationConcatText.length < 26) {
+        this.setState({
+          location:locationConcatText  ,
+        })
+      }else {
+        this.setState({
+          location:locationConcatText.slice(0, 25)+' ...' ,
+        })
+      }
+    }
   }
 
   //
@@ -88,12 +103,8 @@ class Home extends Component {
       title:title
     })
   }
-  //
-  // Goto Select location
-  //
-  // gotoSelectLocation(){
-  //   this.props.navigator.push({id:'select-location'})
-  // }
+
+
   //
   // Go to menu list
   //
@@ -116,23 +127,12 @@ class Home extends Component {
     })
   }
 
-  //
-  // Go to Cart
-  //
-  gotoCartHome(cuisine){
-    this.props.navigator.push({
-      id:'cart',
-    })
-  }
-
-  //
-  // Go to Cart
-  //
   gotoRestroList(){
     this.props.navigation.navigate('AllRestro', {
       title: 'List of restaurants'
     })
   }
+
 
   // renderCart(){
   //   return(
@@ -162,9 +162,6 @@ class Home extends Component {
   // Render main section
   //
   renderMainSection(){
-    // if (this.state.showSearch) {
-    //   return <Search navigator={this.props.navigator}/>
-    // }
     return(
       <View>
         { this.renderSwiper() }
@@ -191,26 +188,6 @@ class Home extends Component {
     );
   }
 
-  // renderTopbarIcon(){
-  //   if (this.state.showSearch) {
-  //     return (
-  //       <TouchableOpacity
-  //         onPress={()=>this.setState({showSearch:false})}
-  //         style={styles.leftTopbar}
-  //       >
-  //         <Icon style={styles.menuIcon} name="arrow-back" size={24} />
-  //       </TouchableOpacity>
-  //     );
-  //   }
-  //   return (
-  //     <TouchableOpacity
-  //       onPress={()=>this.props.openDrawer()}
-  //       style={styles.leftTopbar}
-  //     >
-  //       <Icon style={styles.menuIcon} name="menu" size={24} />
-  //     </TouchableOpacity>
-  //   );
-  // }
 
   //
   // Main render fn
@@ -219,38 +196,7 @@ class Home extends Component {
 
     return (
       <View style={styles.container}>
-        {/* <View style={styles.topbar}>
-          {
-            this.renderTopbarIcon()
-          }
-          <TouchableOpacity
-            onPress={()=>this.gotoSelectLocation()}
-            style={[styles.midTopbar]}>
-            <Text
-              numberOfLines={1}
-              ellipsizeMode={"tail"}
-              style={[styles.locationText]}>
-              {this.state.location}
-            </Text>
-            <Icon style={styles.chevronIcon} name="keyboard-arrow-down" />
-          </TouchableOpacity>
-          <View style={[styles.rightTopbar]}>
-            <View style={{marginRight:0,  height:30}}>
-                { this.renderCart() }
-            </View>
-          </View>
-        </View> */}
         <ScrollView style={styles.scrollbar}>
-          {/* {
-            !this.state.showSearch
-            &&
-            <TouchableOpacity
-              style={styles.searchBox}
-              onPress={()=>this.setState({showSearch:true})}
-              >
-                <Text style={styles.searchBoxText}>Search cuisines, restaurants</Text>
-            </TouchableOpacity>
-          } */}
           {
             this.renderMainSection()
           }
@@ -275,7 +221,6 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    //openDrawer:()=>dispatch(openDrawer()),
     fetchCuisines:()=>dispatch(fetchCuisines()),
     fetchRestaurant:()=>dispatch(fetchRestaurant()),
     fetchBestInTown:()=>dispatch(fetchBestInTown()),
