@@ -3,6 +3,12 @@ import { TabNavigator, TabBarBottom, NavigationActions } from 'react-navigation'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 /***************** Component imports ****************/
+import FoodHome from '../components/foodordering/home';
+import EcomHome from '../components/ecommerce';
+import TableHome from '../components/tablereservation'
+import Orders from '../components/orders';
+import Profile from '../components/profile';
+import Notification from '../components/notification';
 import { FoodStack, EcomStack, TableStack, OrdersStack, ProfileStack, NotificationStack } from './stackNavigation';
 
 

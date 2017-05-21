@@ -39,7 +39,7 @@ class SideDrawer extends Component {
 
   render(){
     return(
-      <View style={{flex: 1}}>
+      <View style={{flex: 1,}}>
         <View style={styles.imageContainer} >
           <Image source={require('../assets/header-bg.jpg')} style={styles.backgroundImage} />
           <Image source={require('../assets/stars.png')} style={styles.stars} />
