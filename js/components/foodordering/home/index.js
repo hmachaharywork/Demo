@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { Text, Image, View, TouchableOpacity, ScrollView, InteractionManager } from 'react-native';
 import Icon from "react-native-vector-icons/MaterialIcons";
 //import { openDrawer } from '../../actions/sidebar';
-//import { ShoppingCart } from "../common/";
+import { ShoppingCart } from "../../../common/";
 import { fetchCuisines, fetchRestaurant, fetchBestInTown, fectchBanners } from '../../../actions/homepage';
 import Cuisines from '../cuisines';
 import NewAndHot from '../newandhot';
@@ -24,13 +24,24 @@ class Home extends Component {
     }
   }
 
+  static navigationOptions = ({navigation, cartSize}) => ({
+
+    headerRight: (<ShoppingCart
+      navigation={navigation}
+      onCartClick={()=>this.gotoCartHome()}
+      numberOfItemsInCart={cartSize}
+    />),
+  })
+
+
+
   //
   // Before the component mounts
   //
   componentDidMount(){
-    // this.setState({
-    //   number: this.props.cartSize
-    // })
+    this.setState({
+      number: this.props.cartSize
+    })
    InteractionManager.runAfterInteractions(() => {
       this.props.fectchBanners();
       this.props.fetchBestInTown();
@@ -42,31 +53,31 @@ class Home extends Component {
   //
   // Deals with component receiving props, i.e state changes
   //
-  // componentWillReceiveProps(props){
-  //   if (props.cartSize > 0 ) {
-  //     this.setState({
-  //       number: props.cartSize
-  //     })
-  //   }
-  //   else if (props.cartSize === 0) {
-  //     this.setState({
-  //       number:0
-  //     })
-  //   }
-  //   if (props.location) {
-  //     const locationText = props.location.name.split(',')
-  //     const locationConcatText = locationText[0]+','+locationText[1];
-  //     if (locationConcatText.length < 26) {
-  //       this.setState({
-  //         location:locationConcatText  ,
-  //       })
-  //     }else {
-  //       this.setState({
-  //         location:locationConcatText.slice(0, 25)+' ...' ,
-  //       })
-  //     }
-  //   }
-  // }
+  componentWillReceiveProps(props){
+    if (props.cartSize > 0 ) {
+      this.setState({
+        number: props.cartSize
+      })
+    }
+    else if (props.cartSize === 0) {
+      this.setState({
+        number:0
+      })
+    }
+    // if (props.location) {
+    //   const locationText = props.location.name.split(',')
+    //   const locationConcatText = locationText[0]+','+locationText[1];
+    //   if (locationConcatText.length < 26) {
+    //     this.setState({
+    //       location:locationConcatText  ,
+    //     })
+    //   }else {
+    //     this.setState({
+    //       location:locationConcatText.slice(0, 25)+' ...' ,
+    //     })
+    //   }
+    // }
+  }
 
   //
   // Goto BestInTown
@@ -86,10 +97,10 @@ class Home extends Component {
   //
   // Go to menu list
   //
-  gotoRestroHome(id,menu,img,status){
-    this.props.navigator.push({
-      id:'restro-home',
+  gotoRestroHome(id,name,menu,img,status){
+    this.props.navigation.navigate('RestroHome', {
       restroId:id,
+      name: name,
       menuId:menu,
       img:img,
       status:status,
@@ -108,11 +119,11 @@ class Home extends Component {
   //
   // Go to Cart
   //
-  // gotoCartHome(cuisine){
-  //   this.props.navigator.push({
-  //     id:'cart',
-  //   })
-  // }
+  gotoCartHome(cuisine){
+    this.props.navigator.push({
+      id:'cart',
+    })
+  }
 
   //
   // Go to Cart
@@ -167,7 +178,7 @@ class Home extends Component {
         <NewAndHot
           restaurant={this.props.restaurant}
           gotoRestroList={()=>this.gotoRestroList()}
-          gotoRestroHome={(id,menu,img,status)=>this.gotoRestroHome(id,menu,img,status)}
+          gotoRestroHome={(id,name,menu,img,status)=>this.gotoRestroHome(id,name,menu,img,status)}
           />
         <View style={styles.cardsHeader}>
           <Text style={styles.cardsHeaderText}>CATEGORIES</Text>

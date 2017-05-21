@@ -1,10 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { View, Text, Image, TouchableOpacity, Linking } from 'react-native';
 import { DrawerItems } from 'react-navigation';
+import { logout } from '../actions/login';
 import styles from './styles';
 
 
-export default class SideDrawer extends Component {
+class SideDrawer extends Component {
+
+  constructor(props){
+    super(props);
+    this.state={
+      active:"",
+      user: null,
+    }
+  }
+
+  componentWillReceiveProps(nextProps){
+    if (nextProps.user.user) {
+      this.setState({user:nextProps.user.user})
+    }else {
+      this.setState({user:null})
+    }
+  }
+
   handleClick = (url) => {
     Linking.canOpenURL(url).then(supported => {
       if(supported) {
@@ -33,16 +52,16 @@ export default class SideDrawer extends Component {
         <View
           style={styles.signOutBlock}
         >
-        {/* {
+        {
           this.state.user !== null
-          && */}
+          &&
           <TouchableOpacity
             style={styles.signOutBlock}
             onPress={()=>this.signOut()}
             >
             <Text style={styles.signOutText}>SIGN OUT</Text>
           </TouchableOpacity>
-        {/* } */}
+         }
         </View>
         <View style={styles.contactUs} >
           <View style={styles.divider} />
@@ -84,3 +103,17 @@ export default class SideDrawer extends Component {
     )
   }
 }
+
+function mapStateToProps (state) {
+  return {
+    user: state.user,
+  }
+}
+
+
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout()),
+});
+
+
+module.exports = connect(mapStateToProps, mapDispatchToProps)(SideDrawer);

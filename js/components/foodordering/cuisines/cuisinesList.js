@@ -27,8 +27,9 @@ class CuisineList extends Component {
   componentWi
   render() {
     const { restaurants, isInit, isFetching } = this.props.restaurantList;
+    const {navigation } = this.props;
     return(
-      <RestroList restroData={restaurants} isInit={isInit} isFetching={isFetching} />
+      <RestroList navigation={ navigation} restroData={restaurants} isInit={isInit} isFetching={isFetching} />
     );
   }
 

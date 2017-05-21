@@ -17,27 +17,6 @@ class RestroListing extends Component {
       this.props.fetchAllRestroList();
     });
   }
-  render() {
-    const { restaurants, isInit, isFetching } = this.props.restaurantList;
-    console.log(restaurants);
-    return(
-      <RestroList restroData={restaurants} isInit={isInit} isFetching={isFetching} />
-      // <View style={styles.container}>
-      //   <Header
-      //     onBack={()=>this.props.navigator.pop()}
-      //     style={styles.topbar}
-      //     title={"List of restaurants"}
-      //     showCart={true}
-      //     navigator={this.props.navigator}
-      //     />
-      //   <ScrollView style={styles.listviewContainer}>
-      //   {
-      //     this.renderList(restaurantList)
-      //   }
-      //   </ScrollView>
-      // </View>
-    );
-  }
 
   //
   // Got to restro Home
@@ -51,67 +30,15 @@ class RestroListing extends Component {
       status:status
     })
   }
-  //
-  // Render the list of restaurants
-  //
-  renderList(restaurantList){
-    if (restaurantList.isInit || restaurantList.isFetching) {
-      return(
-        <ActivityIndicator
-          animating={true}
-          color="#00E676"
-          size="large"/>
-      );
-    }
-    return (
-      <View>
-        {
-          restaurantList.restaurants.sort(sortDistance).map((item, index)=>{
-            let http = item.avatar.split(":");
-            const imgUrl = http.map((item,index)=>{
-              if (item == 'http' && index === 0) {
-                return 'https:'
-              }else if (item == 'https' && index === 0) {
-                return 'https:'
-              }
-              return item
-            })
-            const openTime = moment(item.open.date);
-            const closeTime = moment(item.close.date);
-            var currentTime = moment();
-            let status = moment(currentTime).isBetween(openTime,closeTime)? '':'CLOSED';
-            if (item.is_closed) {
-              status = 'CLOSED'
-            }
-            const url = imgUrl[0].concat(imgUrl[1]);
-            const distance = Math.round(item.distance * 100) / 100;
-            return (
-               <TouchableOpacity
-                key={index}
-                style={styles.resultObjectView}
-                onPress={()=>this.gotoRestroHome(item.id,item.menu,url,status)}
-              >
-                  <Image
-                    source={{uri: `${url}`}}
-                    style={styles.left}
-                    />
-                   <View style={styles.right}>
-                      <View style={styles.rightTop}>
-                          <View><Text style={styles.restroName}>{item.name}</Text></View>
-                          <View style={styles.divider}></View>
-                          <View style = {{flex: 1, flexDirection: 'row', alignItems:'flex-end', justifyContent:'space-between'}}>
-                            <Text style={[styles.restroDistance, {fontStyle:'italic'}]}>{distance} kms away</Text>
-                            <Text style= {{textAlign: 'right', color:'red', fontSize:12}}>{status}</Text>
-                          </View>
-                      </View>
-                </View>
-              </TouchableOpacity>
-            )
-          })
-        }
-      </View>
-      );
-    }
+
+  render() {
+    const { restaurants, isInit, isFetching } = this.props.restaurantList;
+    const { navigation } = this.props;
+    return(
+      <RestroList navigation={navigation} restroData={restaurants} isInit={isInit} isFetching={isFetching} />
+    );
+  }
+
 }
 function mapStateToProps (state) {
   return {

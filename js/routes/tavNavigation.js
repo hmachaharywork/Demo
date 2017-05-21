@@ -1,5 +1,5 @@
 import React from 'react';
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator, TabBarBottom, NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 /***************** Component imports ****************/
@@ -11,31 +11,58 @@ export const FoodTabs = TabNavigator({
     screen: FoodStack,
     navigationOptions: {
       tabBarLabel: 'Home',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-home-outline" size={24} color={tintColor} />,
+      tabBarIcon: ({tintColor}) => <Icon name="ios-home-outline" size={24} color={tintColor}
+        style={{ margin: 0, padding: 0}}
+      />,
     },
   },
   Orders: {
     screen: OrdersStack,
     navigationOptions: {
       tabBarLabel: 'Orders',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-cart-outline" size={24} color={tintColor} />,
+      tabBarIcon: ({tintColor}) => <Icon name="ios-cart-outline" size={24} color={tintColor}
+        style={{ margin: 0, padding: 0}}
+      />,
     },
   },
   Profile: {
     screen: ProfileStack,
     navigationOptions: {
       tabBarLabel: 'Profile',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-contact-outline" size={24} color={tintColor} />,
+      tabBarIcon: ({tintColor}) => <Icon name="ios-contact-outline" size={24} color={tintColor}
+        style={{ margin: 0, padding: 0}}
+      />,
     },
   },
   Notificaton: {
     screen: NotificationStack,
     navigationOptions: {
       tabBarLabel: 'Notification',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-notifications-outline" size={24} color={tintColor} />
+      tabBarIcon: ({tintColor}) => <Icon name="ios-notifications-outline" size={24} color={tintColor}
+        style={{ margin: 0, padding: 0}}
+      />
     },
   },
 }, {
+  // tabBarComponent: ({ jumpToIndex, ...props }) => (
+  //     <TabBarBottom
+  //       {...props}
+  //       jumpToIndex={index => {
+  //         const { dispatch, state } = props.navigation
+  //
+  //         if (state.index === index) {
+  //           const stackRouteName = ['FoodHome', 'BestInTown', 'Cuisine', 'AllRestro', 'RestroHome'][index]
+  //
+  //           dispatch(NavigationActions.reset({
+  //             index: 0,
+  //             actions: [NavigationActions.navigate({ routeName: stackRouteName })],
+  //           }))
+  //         } else {
+  //           jumpToIndex(index)
+  //         }
+  //       }}
+  //     />
+  //   ),
   initialRouteName: 'FoodTab',
   tabBarPosition: 'bottom',
   swipeEnabled: false,
@@ -65,28 +92,36 @@ export const TableTabs = TabNavigator({
     screen: TableStack,
     navigationOptions: {
       tabBarLabel: 'Home',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-home-outline" size={24} color={tintColor} />,
+      tabBarIcon: ({tintColor}) => <Icon name="ios-home-outline" size={24} color={tintColor}
+        style={{ margin: 0, padding: 0}}
+      />,
     },
   },
   Orders: {
     screen: OrdersStack,
     navigationOptions: {
       tabBarLabel: 'Orders',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-cart-outline" size={24} color={tintColor} />,
+      tabBarIcon: ({tintColor}) => <Icon name="ios-cart-outline" size={24} color={tintColor}
+        style={{ margin: 0, padding: 0}}
+      />,
     },
   },
   Profile: {
     screen: ProfileStack,
     navigationOptions: {
       tabBarLabel: 'Profile',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-contact-outline" size={24} color={tintColor} />,
+      tabBarIcon: ({tintColor}) => <Icon name="ios-contact-outline" size={24} color={tintColor}
+        style={{ margin: 0, padding: 0}}
+      />,
     },
   },
   Notificaton: {
     screen: NotificationStack,
     navigationOptions: {
       tabBarLabel: 'Notification',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-notifications-outline" size={24} color={tintColor} />
+      tabBarIcon: ({tintColor}) => <Icon name="ios-notifications-outline" size={24} color={tintColor}
+        style={{ margin: 0, padding: 0}}
+      />
     },
   },
 }, {
@@ -103,7 +138,7 @@ export const TableTabs = TabNavigator({
     },
     labelStyle: {
       fontSize: 10,
-      margin: 0
+      margin: 0,
     },
     indicatorStyle: {
       opacity: 0,
@@ -116,28 +151,36 @@ export const EcomTabs = TabNavigator({
     screen: EcomStack,
     navigationOptions: {
       tabBarLabel: 'Home',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-home-outline" size={24} color={tintColor} />,
+      tabBarIcon: ({tintColor}) => <Icon name="ios-home-outline" size={24} color={tintColor}
+        style={{ margin: 0, padding: 0}}
+      />,
     },
   },
   Orders: {
     screen: OrdersStack,
     navigationOptions: {
       tabBarLabel: 'Orders',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-cart-outline" size={24} color={tintColor} />,
+      tabBarIcon: ({tintColor}) => <Icon name="ios-cart-outline" size={24} color={tintColor}
+        style={{ margin: 0, padding: 0}}
+      />,
     },
   },
   Profile: {
     screen: ProfileStack,
     navigationOptions: {
       tabBarLabel: 'Profile',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-contact-outline" size={24} color={tintColor} />,
+      tabBarIcon: ({tintColor}) => <Icon name="ios-contact-outline" size={24} color={tintColor}
+        style={{ margin: 0, padding: 0}}
+      />,
     },
   },
   Notificaton: {
     screen: NotificationStack,
     navigationOptions: {
       tabBarLabel: 'Notification',
-      tabBarIcon: ({tintColor}) => <Icon name="ios-notifications-outline" size={24} color={tintColor} />
+      tabBarIcon: ({tintColor}) => <Icon name="ios-notifications-outline" size={24} color={tintColor}
+        style={{ margin: 0, padding: 0}}
+      />
     },
   },
 }, {
@@ -154,7 +197,8 @@ export const EcomTabs = TabNavigator({
     },
     labelStyle: {
       fontSize: 10,
-      margin: 0
+      margin: 0,
+      padding: 0,
     },
     indicatorStyle: {
       opacity: 0,

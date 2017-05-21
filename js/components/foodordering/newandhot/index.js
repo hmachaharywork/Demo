@@ -63,7 +63,7 @@ class Restaurants extends Component {
               return (
                 <TouchableOpacity
                   key={index}
-                  onPress={()=>this.props.gotoRestroHome(item.id,item.menu,url,status)}
+                  onPress={()=>this.props.gotoRestroHome(item.id,item.name,item.menu,url,status)}
                 >
                   <Image
                     source={{uri: `${url}`}}

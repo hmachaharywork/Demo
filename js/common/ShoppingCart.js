@@ -1,27 +1,28 @@
 import React from 'react';
 import { View, Image , Text, TouchableOpacity } from 'react-native';
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
-const ShoppingCart = ({tab, numberOfItemsInCart, cartStyle, onCartClick }) => {
+const ShoppingCart = ({navigation, numberOfItemsInCart, onCartClick }) => {
   return (
     <TouchableOpacity
       disabled={ numberOfItemsInCart === 0 }
       onPress={onCartClick}
       style={styles.cartView}>
       {
-        tab === 'food'
+        navigation.state.routeName === 'FoodHome'
         &&
         <Image
           style={{width:30, height: 30}}
-          source={require('../../../assets/icons/dinner.png')}
+          source={require('../assets/icons/dinner.png')}
           />
       }
+
       {
-        tab === 'shop'
+        navigation.state.routeName === 'Ecommerce'
         &&
         <Image
           style={{width:25, height: 25}}
-          source={require('../../../assets/icons/shopping-bag-2.png')}
-          />
+          source={require('../assets/icons/shopping-bag-2.png')}
+        />
       }
       {
         numberOfItemsInCart > 0
@@ -41,6 +42,7 @@ const styles = {
     flexDirection: "row",
     alignItems: 'center',
     position: "relative",
+    padding: 20,
   },
   iconStyle:{
     fontSize: 32,

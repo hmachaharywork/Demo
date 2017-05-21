@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -12,7 +13,8 @@ import Notification from '../components/notification';
 import BestInTown from '../components/foodordering/bestintown/bestintownList';
 import CuisineList from '../components/foodordering/cuisines/cuisinesList';
 import RestroListing from '../components/foodordering/restrolist/';
-
+import RestaurantHome from '../components/foodordering/restrohome/';
+import { ShoppingCart } from '../common/';
 
 const DrawerIcon = ({navigation}) => {
   return(
@@ -32,25 +34,41 @@ export const FoodStack = StackNavigator({
       title: 'Food Ordering',
       initialRouteName: 'FoodHome',
       headerLeft: (<DrawerIcon {...props} />),
-      headerMode: 'screen'
+      //headerRight: (<ShoppingCart />),
+      headerMode: 'screen',
+      headerBackTitle: null,
     }),
   },
   BestInTown: {
     screen: BestInTown,
     navigationOptions: ({navigation}) => ({
       title: `${navigation.state.params.title}`,
+      headerMode: 'screen',
+      headerBackTitle: null,
     }),
   },
   Cuisine: {
     screen: CuisineList,
     navigationOptions: ({navigation}) => ({
       title: `${navigation.state.params.cuisine}`,
+      headerBackTitle: '',
+      headerBackTitle: null,
     }),
   },
   AllRestro: {
     screen: RestroListing,
     navigationOptions: ({navigation}) => ({
       title: `${navigation.state.params.title}`,
+      headerBackTitle: '',
+      headerBackTitle: null,
+    }),
+  },
+  RestroHome: {
+    screen: RestaurantHome,
+    navigationOptions: ({navigation}) => ({
+      title: `${navigation.state.params.name}`,
+      headerBackTitle: '',
+      headerBackTitle: null,
     }),
   },
 });

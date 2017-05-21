@@ -25,6 +25,7 @@ class RestroList extends Component {
   gotoRestroHome(id,name,menu,img,status){
     this.props.navigation.navigate('RestroHome', {
       restroId:id,
+      name: name,
       menuId:menu,
       img:img,
       status:status,
