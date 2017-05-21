@@ -91,19 +91,22 @@ class Restaurants extends Component {
               )
             })
           }
-          <TouchableOpacity
-            style={{backgroundColor:'rgba(0,0,0,0.7)'}}
-            onPress={()=>this.props.gotoRestroList()}
-          >
-            <View style={[styles.cards, {backgroundColor:'#757575'}]}>
-              <Text style={[styles.restaurantName,styles.italicText]}><Icon  name="plus" size={15} /> More</Text>
-              <View style={styles.restaurantBrief}>
-                <View style={styles.restaurantDistance}>
+          <View style={styles.cardBlock}>
+            <TouchableOpacity
+              style={{backgroundColor:'rgba(0,0,0,0.7)'}}
+              onPress={()=>this.props.gotoRestroList()}
+            >
+              <View style={[styles.cards, {backgroundColor:'#757575'}]}>
+                <Text style={[styles.restaurantName,styles.italicText]}><Icon  name="plus" size={15} /> More</Text>
+                <View style={styles.restaurantBrief}>
+                  <View style={styles.restaurantDistance}>
+                  </View>
                 </View>
               </View>
-            </View>
-          </TouchableOpacity>
+            </TouchableOpacity>
+          </View>
         </ScrollView>
+
     );
   }
 }

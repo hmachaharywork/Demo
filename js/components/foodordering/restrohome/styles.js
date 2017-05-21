@@ -53,13 +53,20 @@ module.exports = StyleSheet.create({
     margin:5,
     padding:10,
     paddingLeft:5,
-    marginBottom:5,
+    marginBottom:10,
   },
   productTextStyle:{
     color:'#757575'
   },
   categoryView:{
-    // margin:10,
+    //marginBottom:10,
+    shadowColor: '#757575',
+    shadowOffset: {
+      width: 0,
+      height: 1
+    },
+    shadowRadius: 1,
+    shadowOpacity: .8,
     padding:10,
   },
   categoryHeader:{

@@ -158,13 +158,6 @@ class RestaurantHome extends Component {
     if (restaurantObject.isFetching || restaurantObject.isInit ) {
       return(
         <View style={styles.container}>
-          {/* <Header
-            onBack={()=>this.props.navigator.pop()}
-            style={styles.topbar}
-            title={restaurantObject.menu.title || '...'}
-            showCart={true}
-            navigator={this.props.navigator}
-            /> */}
           <View style={[styles.container]}>
             <Spinner size="large" />
           </View>
@@ -172,13 +165,6 @@ class RestaurantHome extends Component {
     }
     return(
       <View style={styles.container}>
-        {/* <Header
-          onBack={()=>this.props.navigator.pop()}
-          style={styles.topbar}
-          title={restaurantObject.menu.title}
-          showCart={true}
-          navigator={this.props.navigator}
-          /> */}
         <ScrollView style={styles.mainBlock}>
           <View style={styles.imageView}>
           <Image
