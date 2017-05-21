@@ -1,11 +1,11 @@
 import { StyleSheet, Platform, Dimensions } from 'react-native';
 
-const extraTopMargin = Platform.OS === "ios" ? 20 : 0;
+//const extraTopMargin = Platform.OS === "ios" ? 20 : 0;
 const { width, height } = Dimensions.get("window");
 module.exports = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop:extraTopMargin,
+    //marginTop:extraTopMargin,
     backgroundColor:'#F8F8F8',
   },
   geoContainer:{
@@ -45,14 +45,21 @@ module.exports = StyleSheet.create({
     borderBottomWidth:0
   },
   textInput:{
-    height:40,
+    height:50,
     textAlign:'center',
     color:'white',
     width:width*0.8,
-    // marginLeft:20,
   },
   autocompleteTextInput:{
-    height:40,
+    height:50,
+    borderRadius: 0,
+    shadowColor: '#757575',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowRadius: 2,
+    shadowOpacity: .8
   },
   listView:{
 

@@ -73,10 +73,6 @@ class SelectLocation extends Component {
   render() {
     return (
       <View style={styles.container}>
-      {/* <Header
-        onBack={()=>this.props.navigator.pop()}
-        style={styles.topbar}
-        title={"Select delivery location"}/> */}
         <GooglePlacesAutocomplete
           placeholder='Search your location'
           textInputProps={{underlineColorAndroid:'rgba(0,0,0,0)'}}

@@ -7,6 +7,7 @@ module.exports = StyleSheet.create({
   },
   searchBarAndFilterSection: {
     marginTop:10,
+    backgroundColor: '#fff',
     flexDirection: "row",
     marginLeft: 10,
     marginRight: 10,
@@ -18,6 +19,7 @@ module.exports = StyleSheet.create({
     shadowRadius: 2,
     shadowOpacity: .8
   },
+  
   textInput: {
     padding:10,
     color:'#757575',

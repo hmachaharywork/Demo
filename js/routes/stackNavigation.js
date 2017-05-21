@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, Platform } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -17,6 +17,7 @@ import RestaurantHome from '../components/foodordering/restrohome/';
 import Search from '../components/foodordering/search';
 import SelectLocation from '../components/foodordering/selectlocation';
 
+//const extraTopMargin = Platform.OS === "ios" ? 20 : 0;
 
 const DrawerIcon = ({navigation}) => {
   return(
@@ -32,7 +33,6 @@ const DrawerIcon = ({navigation}) => {
 const headerStyleOptions = {
   backgroundColor: '#fff',
   shadowColor: 'transparent',
-  //paddingTop: 20,
   shadowRadius: 0,
   shadowOffset: {
       height: 0,
