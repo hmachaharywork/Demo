@@ -24,7 +24,7 @@ const DrawerIcon = ({navigation}) => {
     <Icon name="menu"
       size={24}
       color="#757575"
-      style={{padding: 20, paddingLeft: 10, paddingRight: 10}}
+      style={{ paddingLeft: 10, paddingRight: 10}}
       onPress={() => navigation.navigate('DrawerOpen')}
     />
   );
@@ -33,6 +33,8 @@ const DrawerIcon = ({navigation}) => {
 const headerStyleOptions = {
   backgroundColor: '#fff',
   shadowColor: 'transparent',
+  marginTop: 20,
+  paddingBottom: 20,
   shadowRadius: 0,
   shadowOffset: {
       height: 0,
