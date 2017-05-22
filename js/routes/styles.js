@@ -3,6 +3,11 @@ import { StyleSheet, Platform, Dimensions } from 'react-native';
 const extraTopMargin = Platform.OS === "ios" ? 20 : 0;
 const { width, height } = Dimensions.get("window");
 module.exports = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: extraTopMargin,
+    backgroundColor: 'transparent',
+  },
   imageContainer: {
     flex: .3,
     width: 300,

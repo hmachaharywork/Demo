@@ -144,11 +144,11 @@ class Search extends Component {
     return (
       <View style={styles.container}>
         <Header
-          onBack={()=>this.props.navigation.goBack()}
+          onBack={()=>this.props.navigation.goBack(null)}
           style={styles.topbar}
           title={"Search"}
           showCart={true}
-          navigator={this.props.navigation}
+          navigation={this.props.navigation}
         />
         <View style={styles.searchBarAndFilterSection}>
           <TextInput

@@ -31,11 +31,11 @@ class bestintownList extends Component {
     return(
       <View style={styles.container}>
         <Header
-          onBack={()=>this.props.navigation.goBack()}
+          onBack={()=>this.props.navigation.goBack(null)}
           style={styles.topbar}
           title={title}
           showCart={true}
-          navigator={navigation}
+          navigation={navigation}
           />
         <RestroList navigation={navigation} restroData={bestRestro} isInit={isInit} isFetching={isFetching} />
       </View>

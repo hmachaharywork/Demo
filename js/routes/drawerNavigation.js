@@ -3,13 +3,14 @@ import { DrawerNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 /*****************Component imports *****************/
-import { FoodTabs, EcomTabs, TableTabs } from './tabNavigation';
-import { FoodStack, EcomStack, TableStack } from './stackNavigation';
+import { FoodStack } from './FoodStack';
+import { EcomStack } from './EcomStack';
+import { TableStack } from './TableStack';
 import SideDrawer from './sideDrawer';
 
 const routes = {
   FoodOrdering: {
-    screen: FoodTabs,
+    screen: FoodStack,
     navigationOptions: {
       drawerLabel: 'FOOD ORDERING',
       drawerIcon: ({tintColor}) => (
@@ -18,7 +19,7 @@ const routes = {
     }
   },
   Ecommerce: {
-    screen: EcomTabs,
+    screen: EcomStack,
     navigationOptions: {
       drawerLabel: 'ECOMMERCE',
       drawerIcon: ({tintColor}) => (
@@ -27,7 +28,7 @@ const routes = {
     }
   },
   Table: {
-    screen: TableTabs,
+    screen: TableStack,
     navigationOptions: {
       drawerLabel: 'TABLE RESERVATION',
       drawerIcon: ({tintColor}) => (

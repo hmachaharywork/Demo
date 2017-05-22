@@ -159,10 +159,11 @@ class RestaurantHome extends Component {
       return(
         <View style={styles.container}>
           <Header
-            onBack={()=>this.props.navigation.goBack()}
+            onBack={()=>this.props.navigation.goBack(null)}
             style={styles.topbar}
             title={restaurantObject.menu.title || '...'}
             showCart={true}
+            navigation={this.props.navigation}
           />
           <View style={[styles.container]}>
             <Spinner size="large" />
@@ -172,10 +173,11 @@ class RestaurantHome extends Component {
     return(
       <View style={styles.container}>
         <Header
-          onBack={()=>this.props.navigation.goBack()}
+          onBack={()=>this.props.navigation.goBack(null)}
           style={styles.topbar}
           title={restaurantObject.menu.title}
           showCart={true}
+          navigation={this.props.navigation}
         />
         <ScrollView style={styles.mainBlock}>
           <View style={styles.imageView}>

@@ -1,20 +1,19 @@
 import React from 'react';
-import { TabNavigator, TabBarBottom, NavigationActions } from 'react-navigation';
+import { TabNavigator, TabBarBottom } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 /***************** Component imports ****************/
-import FoodHome from '../components/foodordering/home';
-import EcomHome from '../components/ecommerce';
-import TableHome from '../components/tablereservation'
-import Orders from '../components/orders';
-import Profile from '../components/profile';
-import Notification from '../components/notification';
-import { FoodStack, EcomStack, TableStack, OrdersStack, ProfileStack, NotificationStack } from './stackNavigation';
+import FoodHome from '../components/foodordering/home/index';
+import EcomHome from '../components/ecommerce/index';
+import TableHome from '../components/tablereservation/index'
+import Orders from '../components/orders/index';
+import Profile from '../components/profile/index';
+import Notification from '../components/notification/index';
 
 
-export const FoodTabs = TabNavigator({
+export const FoodTab = TabNavigator({
   FoodTab: {
-    screen: FoodStack,
+    screen: FoodHome,
     navigationOptions: {
       tabBarLabel: 'Home',
       tabBarIcon: ({tintColor}) => <Icon name="home" size={24} color={tintColor}
@@ -23,7 +22,7 @@ export const FoodTabs = TabNavigator({
     },
   },
   Orders: {
-    screen: OrdersStack,
+    screen: Orders,
     navigationOptions: {
       tabBarLabel: 'Orders',
       tabBarIcon: ({tintColor}) => <Icon name="shopping-cart" size={24} color={tintColor}
@@ -32,7 +31,7 @@ export const FoodTabs = TabNavigator({
     },
   },
   Profile: {
-    screen: ProfileStack,
+    screen: Profile,
     navigationOptions: {
       tabBarLabel: 'Profile',
       tabBarIcon: ({tintColor}) => <Icon name="person" size={24} color={tintColor}
@@ -41,7 +40,7 @@ export const FoodTabs = TabNavigator({
     },
   },
   Notificaton: {
-    screen: NotificationStack,
+    screen: Notification,
     navigationOptions: {
       tabBarLabel: 'Notification',
       tabBarIcon: ({tintColor}) => <Icon name="notifications" size={24} color={tintColor}
@@ -50,25 +49,6 @@ export const FoodTabs = TabNavigator({
     },
   },
 }, {
-  // tabBarComponent: ({ jumpToIndex, ...props }) => (
-  //     <TabBarBottom
-  //       {...props}
-  //       jumpToIndex={index => {
-  //         const { dispatch, state } = props.navigation
-  //
-  //         if (state.index === index) {
-  //           const stackRouteName = ['FoodHome', 'BestInTown', 'Cuisine', 'AllRestro', 'RestroHome'][index]
-  //
-  //           dispatch(NavigationActions.reset({
-  //             index: 0,
-  //             actions: [NavigationActions.navigate({ routeName: stackRouteName })],
-  //           }))
-  //         } else {
-  //           jumpToIndex(index)
-  //         }
-  //       }}
-  //     />
-  //   ),
   initialRouteName: 'FoodTab',
   tabBarPosition: 'bottom',
   swipeEnabled: false,
@@ -93,9 +73,9 @@ export const FoodTabs = TabNavigator({
   }
 });
 
-export const TableTabs = TabNavigator({
+export const TableTab = TabNavigator({
   TableTab: {
-    screen: TableStack,
+    screen: TableHome,
     navigationOptions: {
       tabBarLabel: 'Home',
       tabBarIcon: ({tintColor}) => <Icon name="home" size={24} color={tintColor}
@@ -104,7 +84,7 @@ export const TableTabs = TabNavigator({
     },
   },
   Orders: {
-    screen: OrdersStack,
+    screen: Orders,
     navigationOptions: {
       tabBarLabel: 'Orders',
       tabBarIcon: ({tintColor}) => <Icon name="shopping-cart" size={24} color={tintColor}
@@ -113,7 +93,7 @@ export const TableTabs = TabNavigator({
     },
   },
   Profile: {
-    screen: ProfileStack,
+    screen: Profile,
     navigationOptions: {
       tabBarLabel: 'Profile',
       tabBarIcon: ({tintColor}) => <Icon name="person" size={24} color={tintColor}
@@ -122,7 +102,7 @@ export const TableTabs = TabNavigator({
     },
   },
   Notificaton: {
-    screen: NotificationStack,
+    screen: Notification,
     navigationOptions: {
       tabBarLabel: 'Notification',
       tabBarIcon: ({tintColor}) => <Icon name="notifications" size={24} color={tintColor}
@@ -152,9 +132,9 @@ export const TableTabs = TabNavigator({
   }
 });
 
-export const EcomTabs = TabNavigator({
+export const EcomTab = TabNavigator({
   EcomTab: {
-    screen: EcomStack,
+    screen: EcomHome,
     navigationOptions: {
       tabBarLabel: 'Home',
       tabBarIcon: ({tintColor}) => <Icon name="home" size={24} color={tintColor}
@@ -163,7 +143,7 @@ export const EcomTabs = TabNavigator({
     },
   },
   Orders: {
-    screen: OrdersStack,
+    screen: Orders,
     navigationOptions: {
       tabBarLabel: 'Orders',
       tabBarIcon: ({tintColor}) => <Icon name="shopping-cart" size={24} color={tintColor}
@@ -172,7 +152,7 @@ export const EcomTabs = TabNavigator({
     },
   },
   Profile: {
-    screen: ProfileStack,
+    screen: Profile,
     navigationOptions: {
       tabBarLabel: 'Profile',
       tabBarIcon: ({tintColor}) => <Icon name="person" size={24} color={tintColor}
@@ -181,7 +161,7 @@ export const EcomTabs = TabNavigator({
     },
   },
   Notificaton: {
-    screen: NotificationStack,
+    screen: Notification,
     navigationOptions: {
       tabBarLabel: 'Notification',
       tabBarIcon: ({tintColor}) => <Icon name="notifications" size={24} color={tintColor}

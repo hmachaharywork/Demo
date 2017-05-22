@@ -13,7 +13,6 @@ class Header extends Component {
 
 
   render() {
-    console.log("Header", this.props.navigation);
     const { shoppingBag, navigation } = this.props;
     const { activeHomepage } = this.props.tab;
     const nextGoId = activeHomepage === 'food' ? 'FoodCart' : 'EcomCart';
@@ -68,7 +67,6 @@ class Header extends Component {
           &&
             <ShoppingCart
               onCartClick={()=>this.props.navigation.navigate(nextGoId)}
-              //onCartClick={()=> this.cartView(nextGoId)}
               tab={activeHomepage}
               numberOfItemsInCart={number}
               left={2}
