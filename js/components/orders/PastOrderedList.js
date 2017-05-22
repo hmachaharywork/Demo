@@ -43,7 +43,7 @@ class PastOrderedList extends Component {
     return this.props.pastOrderedList.map( (pastOrderedItem, index) =>
         <PastOrderedItem
           key={`${pastOrderedItem.id}${index}`}
-          navigator={this.props.navigator}
+          navigation={this.props.navigation}
           pastOrderedItem={pastOrderedItem}
           favourite = {pastOrderedItem.favourite}
           typeOfOrder={pastOrderedItem.type} />

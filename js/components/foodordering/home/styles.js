@@ -6,7 +6,7 @@ module.exports = StyleSheet.create({
   container: {
     marginTop: extraTopMargin,
     flex: 1,
-    backgroundColor:'#F8F8F8',
+    backgroundColor:'#FDFDFD',
     //marginBottom: 5,
    // paddingBottom: 5,
   },
@@ -57,6 +57,7 @@ module.exports = StyleSheet.create({
   },
   scrollbar:{
     flex:0.9,
+    backgroundColor: '#FCFCFC',
     //marginBottom: 5,
   },
   searchBox:{
@@ -66,7 +67,7 @@ module.exports = StyleSheet.create({
     alignSelf: 'center',
     flexDirection: 'row',
     borderRadius: 20,
-    backgroundColor: '#F8F8F8',
+    backgroundColor: '#FCFCFC',
     overflow: 'hidden',
   },
   navInput:{
@@ -138,25 +139,30 @@ module.exports = StyleSheet.create({
     // flexDirection:'column',
   },
   cardsHeader:{
-
+    //backgroundColor: '#FDFDFD',
   },
   cardsHeaderText:{
     fontFamily: 'Gill Sans',
     paddingLeft: 16,
     fontSize:16,
     padding:10,
-    color:"#85807F",
-
+    marginTop: 10,
+    //color:"#85807F",
+    color: '#393939',
+    fontWeight: '500',
   },
   cards:{
-    //margin:0.5,
-    width:width/1.7,
     height:130,
     justifyContent:'center',
   },
   cardBlock:{
-    width:width/1.7,
-    margin: 3,
+    height:140,
+    width:width/1.53,
+    backgroundColor: '#fff',
+    padding: 3,
+    paddingLeft: 4,
+    paddingRight: 4,
+    margin: 5,
     justifyContent:'center',
     shadowColor: '#757575',
     shadowOffset: {
@@ -167,8 +173,6 @@ module.exports = StyleSheet.create({
     shadowOpacity: .8,
   },
   cards2:{
-    //margin:2,
-    width:width/1.7,
     height:130,
     justifyContent:'center',
   },

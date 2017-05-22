@@ -7,7 +7,6 @@ module.exports = StyleSheet.create({
     flex: 1,
     marginTop: extraTopMargin,
     backgroundColor:'#F8F8F8',
-    marginBottom: 10,
   },
   topbar:{
     flex:0.1,

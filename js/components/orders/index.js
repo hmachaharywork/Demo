@@ -5,7 +5,6 @@ import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-ta
 import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { Card, CardSection, Button } from '../../common';
-//import Header from '../Header/';
 import NowOrderedList from './NowOrderedList';
 import PastOrderedList from './PastOrderedList';
 import FavouriteOrderedList from './FavouriteOrderedList';
@@ -78,12 +77,13 @@ class Orders extends Component {
           renderTabBar={() => <ScrollableTabBar />}
           onChangeTab={(event)=>this.changetab(event)}
         >
-          <NowOrderedList tabLabel="NOW" navigator={this.props.navigator} />
-          <PastOrderedList tabLabel="PAST" navigator={this.props.navigator} />
-          <FavouriteOrderedList tabLabel="FAVOURITE" navigator={this.props.navigator}/>
+          <NowOrderedList tabLabel="NOW" navigation={this.props.navigation} />
+          <PastOrderedList tabLabel="PAST" navigation={this.props.navigation} />
+          <FavouriteOrderedList tabLabel="FAVOURITE" navigation={this.props.navigation}/>
       </ScrollableTabView>
     )
   }
+
   render() {
     return (
       <View style={styles.container}>

@@ -29,8 +29,6 @@ class NowOrderedList extends Component {
 
  		return (
       <ScrollView>
-        { /*this.renderFoodNowOrderedList() */ }
-     { /* this.  renderEcommerceNowOrderedList() */}
      {
        this.renderNowOrderedList()
      }
@@ -43,26 +41,16 @@ class NowOrderedList extends Component {
         <NowOrderedItem key={index} nowOrderedItem={nowOrderedItem} typeOfOrder={nowOrderedItem.type}/>
     );
   }
-
-  // renderFoodNowOrderedList() {
-  //    return this.props.nowOrderedList.foodDelivery.map( (nowOrderedItem, index) =>
-  //       <NowOrderedItem key={nowOrderedItem.id} nowOrderedItem={nowOrderedItem} typeOfOrder="food" />
-  //   );
-  // }
-  // renderEcommerceNowOrderedList() {
-  //    return this.props.nowOrderedList.ecommerce.map( (nowOrderedItem, index) =>
-  //       <NowOrderedItem key={nowOrderedItem.id} nowOrderedItem={nowOrderedItem} typeOfOrder="ecommerce"/>
-  //   );
-  // }
 }
 
 const mapStateToProps = (state) => {
   const {isLoading, nowOrderedData } =  state.orders.nowOrderedObj;
 
-  return { isLoading,
-           status: nowOrderedData.status,
-           nowOrderedList: nowOrderedData.data,
-           activeOrderTab: state.orders.activeOrderTab
+  return {
+    isLoading,
+    status: nowOrderedData.status,
+    nowOrderedList: nowOrderedData.data,
+    activeOrderTab: state.orders.activeOrderTab
   }
 };
 

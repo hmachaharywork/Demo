@@ -72,16 +72,15 @@ class FavouriteOrderedList extends Component {
   replaceAndCleartheCart(item,restroName, extra){
     if (restroName === undefined) {
       this.props.removeAndClearShoppingBag();
-      this.props.navigator.push({
-        id: 'cart-shop',
+      this.props.navigation.navigate('CartShop', {
         item: item.cartItem,
         from: 'fav-orders'
       });
       return ;
     }
     this.props.replaceAndClear(item,restroName, extra);
-    this.props.navigator.push({
-      id: 'cart',
+    this.props.navigation.navigate('FoodCart', {
+      // id: 'cart',
       item: item.restroId,
       from: 'fav-orders'
     });
@@ -96,8 +95,8 @@ class FavouriteOrderedList extends Component {
         return ;
       }
       this.props.addOrderAgain(item,restroName, additional_charges);
-      this.props.navigator.push({
-        id: 'cart',
+      this.props.navigation.navigate('FoodCart', {
+        //id: 'cart',
         item: item.restroId,
         from: 'fav-orders'
       });
@@ -108,8 +107,8 @@ class FavouriteOrderedList extends Component {
         return ;
       }
       this.props.removeAndClearShoppingBag();
-      this.props.navigator.push({
-        id: 'cart-shop',
+      this.props.navigation.navigate('CartShop', {
+        //id: 'cart-shop',
         item: item.cartItem,
         from: 'fav-orders'
       });
@@ -130,7 +129,7 @@ class FavouriteOrderedList extends Component {
             key={index}
             orderAgainAndReroute={(item,restroName)=>this.orderAgainAndReroute(item,restroName, orderType, additional_charges)}
             favouriteOrderedItem={favouriteOrderedItem}
-            navigator={this.props.navigator} />
+            navigation={this.props.navigation} />
         );
       }
     );

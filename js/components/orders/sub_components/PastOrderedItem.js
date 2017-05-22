@@ -31,12 +31,7 @@ componentWillReceiveProps(nextProps){
       orderId,
       cartItem
     };
-    this.props.navigator.push({
-        id:'return-item',
-        // orderId: orderId,
-        // subcategory_id: subcategory_id
-        itemToReturn: itemToReturn
-      })
+    this.props.navigation.navigate('ReturnItem', {itemToReturn: itemToReturn});
 }
 
 displayItemsOrderedOnExpand(cartItem, orderId, orderId2) {
@@ -70,7 +65,8 @@ displayOrderDetails(expand, payablePrice, typeOfOrder, orderId) {
       return (
          <CardSection style={{paddingTop:0,paddingBottom:20}}>
              <View style={{flex: 1, flexDirection: 'column'}}>
-                <Text style = {{fontWeight: '500'}}>Bill details</Text>
+                <Text
+                  style = {{fontWeight: '600', paddingBottom: 10, }}>Bill details:</Text>
                 {
                    this.displayItemsOrderedOnExpand(cartItem, orderId,  order_id)
                 }
@@ -122,7 +118,7 @@ displayOrderDetails(expand, payablePrice, typeOfOrder, orderId) {
     const { id, restroName, items, price, favourite, toggleLove, addtoFavourite, date, expand } = this.props.pastOrderedItem;
     const { typeOfOrder } = this.props;
     return (
-      <Card>
+      <Card style={styles.card}>
         <CardSection>
           <View style={{flex: 1}}>
             <View style={styles.restroNamePrice}>

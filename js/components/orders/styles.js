@@ -7,7 +7,9 @@ module.exports = StyleSheet.create({
     flex: 1,
     marginTop: extraTopMargin,
     backgroundColor:'#F8F8F8',
-    marginBottom: 10,
+  },
+  orderlistContainer: {
+    backgroundColor: '#fff',
   },
   topbar:{
     flex:0.1,
@@ -78,6 +80,16 @@ module.exports = StyleSheet.create({
     alignSelf: 'flex-end',
 
 
+  },
+
+  card:{
+    shadowColor: '#757575',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowRadius: 1,
+    shadowOpacity: .8
   },
 
   //

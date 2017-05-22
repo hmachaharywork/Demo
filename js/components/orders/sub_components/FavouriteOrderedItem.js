@@ -12,9 +12,9 @@ let currentTime = new Date().getTime();
 class FavouriteOrderedItem extends Component {
   render() {
     const { id, restroName, items, price, order_again} = this.props.favouriteOrderedItem;
-    var navigator = this.props.navigator;
+    var navigation = this.props.navigation;
     return (
-      <Card>
+      <Card style={styles.card}>
 
         <CardSection>
           <View style={{flex: 1}}>

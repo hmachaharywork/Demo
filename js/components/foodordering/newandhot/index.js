@@ -67,7 +67,7 @@ class Restaurants extends Component {
                   >
                     <Image
                       source={{uri: `${url}`}}
-                      resizeMode={'stretch'}
+                      resizeMode={'cover'}
                       style={styles.cards}
                       >
                       <View style={[styles.cards, {backgroundColor:'rgba(0,0,0,0.5)'}]}>
