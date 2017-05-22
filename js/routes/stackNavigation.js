@@ -116,10 +116,7 @@ export const OrdersStack = StackNavigator({
   Orders: {
     screen: Orders,
     navigationOptions: (props) => ({
-      title: 'Orders',
-      initialRouteName: 'Orders',
-      headerLeft: (<DrawerIcon {...props} />),
-      headerMode: 'screen'
+      header: null,
     }),
   }
 });
@@ -128,10 +125,7 @@ export const ProfileStack = StackNavigator({
   Profile: {
     screen: Profile,
     navigationOptions: (props) => ({
-      title: 'Profile',
-      initialRouteName: 'Profile',
-      headerLeft: (<DrawerIcon {...props} />),
-      headerMode: 'screen'
+      header: null,
     }),
   }
 });
@@ -140,10 +134,7 @@ export const NotificationStack = StackNavigator({
   Notification: {
     screen: Notification,
     navigationOptions: (props) => ({
-      title: 'Notifications',
-      initialRouteName: 'Notification',
-      headerLeft: (<DrawerIcon {...props} />),
-      headerMode: 'screen'
+      header: null,
     }),
   }
 });

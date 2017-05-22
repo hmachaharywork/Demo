@@ -12,13 +12,6 @@ var moment = require('moment');
 
 class Search extends Component {
 
-  static navigationOptions = ({location, navigation, cartSize}) => ({
-    headerRight: (<ShoppingCart
-      navigation={navigation}
-      onCartClick={()=>navigation.navigate('Cart')}
-      numberOfItemsInCart={cartSize}
-    />),
-  })
 
   constructor(props){
     super(props);

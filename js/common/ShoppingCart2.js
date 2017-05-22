@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image , Text, TouchableOpacity } from 'react-native';
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
-const ShoppingCart = ({tab, numberOfItemsInCart, cartStyle, onCartClick }) => {
+const ShoppingCart2 = ({tab, numberOfItemsInCart, cartStyle, onCartClick }) => {
   return (
     <TouchableOpacity
       disabled={ numberOfItemsInCart === 0 }
@@ -54,18 +54,16 @@ const styles = {
     height:13,
     borderRadius:6,
     backgroundColor: "#00C0AF",
-    left:23,
-    top: 20,
+    left:26,
+    top: 5,
   },
   badgeSetting:{
     color:"#e3e3e3",
     fontSize:8,
     marginTop:1.5,
-    //marginLeft:1,
     alignSelf: "center",
-    //textAlign: "center",
     justifyContent: "center"
   }
 };
 
-export { ShoppingCart };
+export { ShoppingCart2 };

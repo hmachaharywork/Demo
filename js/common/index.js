@@ -7,3 +7,4 @@ export * from './Spinner';
 export * from './Product';
 //export * from './RadioButton';
 export * from './ShoppingCart';
+export * from './ShoppingCart2';

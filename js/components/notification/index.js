@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Text, Image, View, Dimensions, TouchableOpacity, ScrollView, TextInput, ActivityIndicator } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { setActiveTab, fetchNotifications, deleteNotifications } from '../../actions';
 import { Spinner } from '../../common';
 import styles from './styles';
@@ -21,11 +22,34 @@ class Notification extends Component {
   componentWillReceiveProps(nextProps){
    // console.log("the next is", nextProps.status, nextProps.notificationsList, nextProps.isLoading);
   }
+
+  renderTopbarIcon(){
+    return (
+      <TouchableOpacity
+        onPress={()=>this.props.navigation.navigate('DrawerOpen')}
+        style={styles.leftTopbar}
+      >
+        <MaterialIcons style={styles.menuIcon} name="menu" size={24} />
+      </TouchableOpacity>
+    );
+  }
+
   render(){
     const { isLoading, status, notificationsList,user } = this.props;
 
     return(
       <View style={styles.container}>
+        <View style={styles.topbar}>
+          {
+            this.renderTopbarIcon()
+          }
+          <View style={styles.title}>
+            <Text style={styles.titleText}>Notifications</Text>
+          </View>
+          <View style={styles.clearFix}>
+
+          </View>
+        </View>
           {this.renderNotifications(user,notificationsList, isLoading, status)}
       </View>
     );

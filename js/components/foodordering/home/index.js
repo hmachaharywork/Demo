@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Text, Image, View, TouchableOpacity, ScrollView, InteractionManager } from 'react-native';
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { ShoppingCart } from "../../../common/";
+import { ShoppingCart2 } from "../../../common/";
 import { fetchCuisines, fetchRestaurant, fetchBestInTown, fectchBanners } from '../../../actions/homepage';
+import { setActiveHomepage } from '../../../actions/tab';
 import Cuisines from '../cuisines';
 import NewAndHot from '../newandhot';
 import BestInTown from '../bestintown';
@@ -29,7 +30,11 @@ class Home extends Component {
     this.setState({
       number: this.props.cartSize
     })
-   InteractionManager.runAfterInteractions(() => {
+    if(this.props.navigation.state.routeName === 'FoodHome' || 'FoodOrdering') {
+      this.props.setActiveHomepage("food");
+    }
+
+    InteractionManager.runAfterInteractions(() => {
       this.props.fectchBanners();
       this.props.fetchBestInTown();
       this.props.fetchRestaurant();
@@ -108,8 +113,8 @@ class Home extends Component {
 
   renderCart(){
     return(
-      <ShoppingCart
-      onCartClick={()=>this.gotoCartHome()}
+      <ShoppingCart2
+      onCartClick={()=>this.props.navigation.navigate('FoodCart')}
       tab={this.props.tab}
       numberOfItemsInCart={this.state.number}/>);
   }
@@ -194,7 +199,7 @@ class Home extends Component {
             </TouchableOpacity>
           </View>
           <View style={[styles.rightTopbar]}>
-            <View style={{marginRight:0,  height:30}}>
+            <View>
                 { this.renderCart() }
             </View>
           </View>
@@ -219,11 +224,13 @@ function mapStateToProps (state) {
     location: state.location.activeLocation,
     cartSize:state.cart.size,
     cart:state.cart,
+    tab: state.tab.activeHomepage,
   }
 }
 
 function mapDispatchToProps (dispatch) {
   return {
+    setActiveHomepage: (homepage)=> dispatch(setActiveHomepage(homepage)),
     fetchCuisines:()=>dispatch(fetchCuisines()),
     fetchRestaurant:()=>dispatch(fetchRestaurant()),
     fetchBestInTown:()=>dispatch(fetchBestInTown()),

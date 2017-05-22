@@ -1,17 +1,48 @@
 import { StyleSheet, Platform, Dimensions } from 'react-native';
 
 const { width, height } = Dimensions.get("window");
-
+const extraTopMargin = Platform.OS === "ios" ? 20 : 0;
 module.exports = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: extraTopMargin,
     backgroundColor:'#F8F8F8',
+    marginBottom: 10,
   },
   topbar:{
     flex:0.1,
-    backgroundColor: 'transparent',
+    backgroundColor: '#fff',
     flexDirection: 'row',
   },
+  leftTopbar:{
+    flex:0.15,
+    alignSelf:'center',
+  },
+  menuIcon:{
+    textAlign: 'center',
+    color: '#757575',
+  },
+  title:{
+    flex: 0.7,
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  titleText:{
+    color:'grey',
+    fontSize:18,
+    padding: 5,
+    alignSelf: 'center',
+    // textAlign: "center",
+    fontFamily : 'Helvetica'
+  },
+  clearFix: {
+    flex: .15,
+  },
+  // topbar:{
+  //   flex:0.1,
+  //   backgroundColor: 'transparent',
+  //   flexDirection: 'row',
+  // },
   orderStatus: {
     fontSize:17,
     fontWeight: "500"

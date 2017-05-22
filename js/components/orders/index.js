@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import { Text, Image, View, Dimensions, TouchableOpacity, ScrollView, TextInput, ActivityIndicator } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 import styles from './styles';
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 import { Card, CardSection, Button } from '../../common';
 //import Header from '../Header/';
 import NowOrderedList from './NowOrderedList';
@@ -36,6 +36,17 @@ class Orders extends Component {
         break;
     }
     this.props.setActiveOrderTab(event.i);
+  }
+
+  renderTopbarIcon(){
+    return (
+      <TouchableOpacity
+        onPress={()=>this.props.navigation.navigate('DrawerOpen')}
+        style={styles.leftTopbar}
+      >
+        <Icon style={styles.menuIcon} name="menu" size={24} />
+      </TouchableOpacity>
+    );
   }
 
   renderOrdersMain(){
@@ -76,7 +87,17 @@ class Orders extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <Header style={styles.topbar} title={"Orders"} onBack={()=>this.props.setActiveTab('homepage')}/> */}
+        <View style={styles.topbar}>
+          {
+            this.renderTopbarIcon()
+          }
+          <View style={styles.title}>
+            <Text style={styles.titleText}>Orders</Text>
+          </View>
+          <View style={styles.clearFix}>
+
+          </View>
+        </View>
         {
           this.renderOrdersMain()
         }

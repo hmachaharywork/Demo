@@ -9,7 +9,7 @@ class Header extends Component {
   render() {
     const { shoppingBag } = this.props;
     const { activeHomepage } = this.props.tab;
-    const nextGoId = activeHomepage === 'food' ? 'cart' : 'cart-shop';
+    const nextGoId = activeHomepage === 'food' ? 'FoodCart' : 'EcomCart';
     const number = activeHomepage === 'food' ? this.props.cart.size : shoppingBag.size;
     if (number <= 0) {
       return(
@@ -59,7 +59,7 @@ class Header extends Component {
           (this.props.showCart !==undefined && this.props.showCart)
           &&
             <ShoppingCart
-              onCartClick={()=>this.props.navigator.push({id:nextGoId})}
+              onCartClick={()=>this.props.navigation.navigate(nextGoId)}
               tab={activeHomepage}
               numberOfItemsInCart={number}
               left={2}

@@ -51,8 +51,9 @@ module.exports = StyleSheet.create({
   },
   rightTopbar:{
     flex: 0.15,
-    height: 45,
     alignSelf:'center',
+    justifyContent: "center",
+    flexDirection:"row",
   },
   scrollbar:{
     flex:0.9,
@@ -70,8 +71,6 @@ module.exports = StyleSheet.create({
   navInput:{
     alignSelf: 'center',
     justifyContent: 'center',
-    // marginLeft: 5,
-    // marginRight: 10,
   },
   searchInput:{
     flexDirection: 'row',
