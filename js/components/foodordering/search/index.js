@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Text, Image, View, ScrollView, TouchableOpacity, TextInput } from 'react-native';
-import { Spinner } from "../../../common/";
+import { Spinner, ShoppingCart } from "../../../common/";
 import { searchApp } from '../../../actions/search';
 import { sortDistance } from '../../../utility/sort';
 import Icon from "react-native-vector-icons/MaterialIcons";
+import Header from '../../Header/';
 import styles from './styles';
 
 var moment = require('moment');
 
 class Search extends Component {
+
+  static navigationOptions = ({location, navigation, cartSize}) => ({
+    headerRight: (<ShoppingCart
+      navigation={navigation}
+      onCartClick={()=>navigation.navigate('Cart')}
+      numberOfItemsInCart={cartSize}
+    />),
+  })
+
   constructor(props){
     super(props);
     this.state = {
@@ -140,6 +150,13 @@ class Search extends Component {
 
     return (
       <View style={styles.container}>
+        <Header
+          onBack={()=>this.props.navigation.goBack()}
+          style={styles.topbar}
+          title={"Search"}
+          showCart={true}
+          navigator={this.props.navigation}
+        />
         <View style={styles.searchBarAndFilterSection}>
           <TextInput
             style={styles.textInput}

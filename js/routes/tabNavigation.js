@@ -135,8 +135,8 @@ export const TableTabs = TabNavigator({
   tabBarPosition: 'bottom',
   swipeEnabled: false,
   tabBarOptions: {
-    activeTintColor: '#4DD1A5',
-    inactiveTintColor: '#AAADAC',
+    activeTintColor: '#0ACED4',
+    inactiveTintColor: '#757575',
     upperCaseLabel: false,
     showIcon: true,
     style: {
@@ -194,8 +194,8 @@ export const EcomTabs = TabNavigator({
   tabBarPosition: 'bottom',
   swipeEnabled: false,
   tabBarOptions: {
-    activeTintColor: '#4DD1A5',
-    inactiveTintColor: '#AAADAC',
+    activeTintColor: '#0ACED4',
+    inactiveTintColor: '#757575',
     upperCaseLabel: false,
     showIcon: true,
     style: {

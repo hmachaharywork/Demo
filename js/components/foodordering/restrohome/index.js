@@ -4,10 +4,10 @@ import { filter } from 'lodash';
 import { TabNavigator } from 'react-navigation';
 import { Dimensions, Text, Image, View, TouchableOpacity, ScrollView, Alert, InteractionManager } from 'react-native';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
-//import Header from '../Header/'
-import { Product, Spinner } from '../../../common';
+import { Product, Spinner, ShoppingCart } from '../../../common';
 import { fetchMenu, clearMenuReducers } from '../../../actions/restaurant';
 import { addToCart, removeFromCart, removeAndClear } from '../../../actions/cart';
+import Header from '../../Header/';
 import styles from './styles';
 
 const { width } = Dimensions.get("window");
@@ -15,6 +15,7 @@ const { width } = Dimensions.get("window");
 // const MenuTab = TabNavigator(config, options);
 
 class RestaurantHome extends Component {
+
   constructor(props){
     super(props);
     this.state={
@@ -27,8 +28,6 @@ class RestaurantHome extends Component {
   }
   componentDidMount(){
     const { restroId, menuId, status, img } = this.props.navigation.state.params;
-    //const restroId = this.props.restroId;
-    //const menuId = this.props.menuId;
     this.setState({avatar:img, restroId: restroId, closed: status === 'CLOSED'?true:false})
     InteractionManager.runAfterInteractions(() => {
       this.props.fetchMenu(menuId);
@@ -154,10 +153,18 @@ class RestaurantHome extends Component {
       })
   }
   render() {
+    //console.log(this.props);
     const restaurantObject = this.props.restaurantObject;
     if (restaurantObject.isFetching || restaurantObject.isInit ) {
       return(
         <View style={styles.container}>
+          <Header
+            onBack={()=>this.props.navigation.goBack()}
+            style={styles.topbar}
+            title={restaurantObject.menu.title || '...'}
+            showCart={true}
+            navigator={this.props.navigation}
+          />
           <View style={[styles.container]}>
             <Spinner size="large" />
           </View>
@@ -165,6 +172,13 @@ class RestaurantHome extends Component {
     }
     return(
       <View style={styles.container}>
+        <Header
+          onBack={()=>this.props.navigation.goBack()}
+          style={styles.topbar}
+          title={restaurantObject.menu.title}
+          showCart={true}
+          navigator={this.props.navigation}
+        />
         <ScrollView style={styles.mainBlock}>
           <View style={styles.imageView}>
           <Image

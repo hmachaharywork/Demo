@@ -3,6 +3,9 @@ import {connect} from 'react-redux';
 import { Text, Image, View, TouchableOpacity, ScrollView, InteractionManager } from 'react-native';
 import RestroList from '../restrolistview/';
 import { requestBestInTownList, clearBestInTown } from '../../../actions/bestintown';
+import { ShoppingCart } from "../../../common/";
+import Header from '../../Header/';
+import styles from './styles';
 
 class bestintownList extends Component {
 
@@ -24,8 +27,18 @@ class bestintownList extends Component {
   render() {
     const { bestRestro, isInit, isFetching } = this.props.bestintown;
     const { navigation } = this.props;
+    const { title } = navigation.state.params;
     return(
+      <View style={styles.container}>
+        <Header
+          onBack={()=>navigation.goBack()}
+          style={styles.topbar}
+          title={title}
+          showCart={true}
+          navigator={navigation}
+          />
         <RestroList navigation={navigation} restroData={bestRestro} isInit={isInit} isFetching={isFetching} />
+      </View>
     );
   }
 }

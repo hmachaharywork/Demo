@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Text, Image, View, TouchableOpacity, ScrollView, ActivityIndicator, InteractionManager } from 'react-native';
-// import Header from '../Header/'
+import { ShoppingCart } from "../../../common/";
 import { fetchAllRestroList } from '../../../actions/listofrestro';
 import { sortDistance } from '../../../utility/sort';
 import RestroList from '../restrolistview/';
-// import styles from './styles';
+import Header from '../../Header/';
+import styles from './styles';
 
 var moment = require('moment');
 class RestroListing extends Component {
+
   constructor(props){
     super(props);
   }
@@ -35,7 +37,16 @@ class RestroListing extends Component {
     const { restaurants, isInit, isFetching } = this.props.restaurantList;
     const { navigation } = this.props;
     return(
+      <View style={styles.container}>
+        <Header
+          onBack={()=>this.props.navigation.goBack()}
+          style={styles.topbar}
+          title={"List of restaurants"}
+          showCart={true}
+          navigator={this.props.navigation}
+        />
       <RestroList navigation={navigation} restroData={restaurants} isInit={isInit} isFetching={isFetching} />
+    </View>
     );
   }
 

@@ -8,17 +8,6 @@ var moment = require('moment');
 
 class RestroList extends Component {
 
-  render() {
-    const { restroData, isInit, isFetching } = this.props;
-    return(
-      <View style={styles.container}>
-        {
-          this.renderList(restroData, isInit, isFetching)
-        }
-      </View>
-    );
-  }
-
   //
   // Got to restro Home
   //
@@ -32,21 +21,18 @@ class RestroList extends Component {
       restName: name,
     })
   }
-  //
-  // Render the list of restaurants
-  //
-  renderList(restroData, isInit, isFetching){
 
+  render() {
+    const { restroData, isInit, isFetching } = this.props;
     if (isInit || isFetching) {
       return(
         <Spinner size="large" />
       );
     }else if (restroData === undefined || restroData.length === 0) {
-        return <ScrollView style={styles.listviewContainer} />;
+      return <ScrollView style={styles.listviewContainer} />;
     }
     return (
-     <ScrollView style={styles.listviewContainer}>
-
+      <ScrollView style={styles.listviewContainer}>
         {
           restroData.sort(sortDistance).map((item, index)=>{
             let http = item.avatar.split(":");
@@ -79,14 +65,14 @@ class RestroList extends Component {
                  />
 
                 <View style={styles.right}>
-                      <View style={styles.rightTop}>
-                          <View><Text style={styles.restroName}>{item.name}</Text></View>
-                          <View style={styles.divider}></View>
-                          <View style = {{flex: 1, flexDirection: 'row', justifyContent:'space-between', alignItems:'flex-end'}}>
-                            <Text style={[styles.restroDistance, {fontStyle :'italic'}]}>{distance} kms away</Text>
-                            <Text style= {{textAlign: 'right', color:'red', fontSize: 12}}>{status}</Text>
-                          </View>
-                      </View>
+                  <View style={styles.rightTop}>
+                    <View><Text style={styles.restroName}>{item.name}</Text></View>
+                    <View style={styles.divider}></View>
+                    <View style = {{flex: 1, flexDirection: 'row', justifyContent:'space-between', alignItems:'flex-end'}}>
+                      <Text style={[styles.restroDistance, {fontStyle :'italic'}]}>{distance} kms away</Text>
+                      <Text style= {{textAlign: 'right', color:'red', fontSize: 12}}>{status}</Text>
+                    </View>
+                  </View>
                 </View>
 
               </TouchableOpacity>
@@ -94,9 +80,9 @@ class RestroList extends Component {
           })
         }
 
-    </ScrollView>
-      );
-    }
+      </ScrollView>
+    );
+  }
 }
 
 

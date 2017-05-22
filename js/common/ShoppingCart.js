@@ -7,23 +7,23 @@ const ShoppingCart = ({navigation, numberOfItemsInCart, onCartClick }) => {
       disabled={ numberOfItemsInCart === 0 }
       onPress={onCartClick}
       style={styles.cartView}>
-      {
-        navigation.state.routeName === 'FoodHome'
-        &&
+      {/* {
+        (navigation.state.routeName === 'FoodHome' || 'RestroHome' || 'Cuisine' || 'BestInTown' || 'Cart' || 'AllRestro' || 'Search')
+        && */}
         <Image
           style={{width:30, height: 30}}
           source={require('../assets/icons/dinner.png')}
           />
-      }
+      {/* } */}
 
-      {
+      {/* {
         navigation.state.routeName === 'Ecommerce'
         &&
         <Image
           style={{width:25, height: 25}}
           source={require('../assets/icons/shopping-bag-2.png')}
         />
-      }
+      } */}
       {
         numberOfItemsInCart > 0
         &&

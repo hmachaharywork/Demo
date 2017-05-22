@@ -1,8 +1,10 @@
 import { StyleSheet, Platform, Dimensions } from 'react-native';
 
+const extraTopMargin = Platform.OS === "ios" ? 20 : 0;
 const { width, height } = Dimensions.get("window");
 module.exports = StyleSheet.create({
   container: {
+    marginTop: extraTopMargin,
     flex: 1,
     backgroundColor:'#F8F8F8',
     marginBottom: 10,
@@ -49,14 +51,17 @@ module.exports = StyleSheet.create({
   },
   rightTopbar:{
     flex: 0.15,
+    height: 45,
     alignSelf:'center',
-    // justifyContent: "center",
-    //flexDirection:"row",
   },
   scrollbar:{
     flex:0.9,
   },
   searchBox:{
+    flex: 0.7,
+    height: 35,
+    justifyContent: 'center',
+    alignSelf: 'center',
     flexDirection: 'row',
     borderRadius: 20,
     backgroundColor: '#F8F8F8',
@@ -65,25 +70,23 @@ module.exports = StyleSheet.create({
   navInput:{
     alignSelf: 'center',
     justifyContent: 'center',
-    marginLeft: 5,
-    marginRight: 10,
-  },
-  navigationIcon : {
-    fontSize: 18,
-    color: '#757575',
+    // marginLeft: 5,
+    // marginRight: 10,
   },
   searchInput:{
     flexDirection: 'row',
     alignSelf: "center",
   },
   searchIcon: {
-    paddingLeft: 5,
-    paddingTop: 8,
+    textAlign: 'left',
+    paddingRight: 5,
+    // paddingTop: 8,
     color:'#757575',
     fontSize:20,
   },
   searchBoxText:{
-    padding:8,
+    textAlign: 'left',
+    // padding:8,
     color:'#757575',
     fontSize:16,
   },

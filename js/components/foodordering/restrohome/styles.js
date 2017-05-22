@@ -1,10 +1,10 @@
 import { StyleSheet, Platform, Dimensions } from 'react-native';
 
-//const extraTopMargin = Platform.OS === "ios" ? 20 : 0;
+const extraTopMargin = Platform.OS === "ios" ? 20 : 0;
 const { width, height } = Dimensions.get("window");
 module.exports = StyleSheet.create({
   container: {
-    //marginTop:extraTopMargin,
+    marginTop:extraTopMargin,
     flex: 0.9,
     backgroundColor:'#fff',
   },
@@ -60,13 +60,13 @@ module.exports = StyleSheet.create({
   },
   categoryView:{
     //marginBottom:10,
-    shadowColor: '#757575',
-    shadowOffset: {
-      width: 0,
-      height: 1
-    },
-    shadowRadius: 1,
-    shadowOpacity: .8,
+    // shadowColor: '#757575',
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 1
+    // },
+    // shadowRadius: 1,
+    // shadowOpacity: .8,
     padding:10,
   },
   categoryHeader:{

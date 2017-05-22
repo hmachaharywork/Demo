@@ -47,71 +47,43 @@ export const FoodStack = StackNavigator({
     screen: FoodHome,
     navigationOptions: (props) => ({
       initialRouteName: 'FoodHome',
-      headerStyle: headerStyleOptions,
-      headerTintColor: '#757575',
-      headerLeft: (<DrawerIcon {...props} />),
-      headerMode: 'screen',
-      headerBackTitle: null,
+      header: null,
     }),
   },
   Location: {
     screen: SelectLocation,
     navigationOptions: ({navigation}) => ({
-      title: 'Select Location',
-      headerStyle: headerStyleOptions,
-      headerMode: 'screen',
-      headerTintColor: '#757575',
-      headerBackTitle: null,
+      header: null,
     }),
   },
   Search: {
     screen: Search,
     navigationOptions: ({navigation}) => ({
-      title: 'Search',
-      headerStyle: headerStyleOptions,
-      headerMode: 'screen',
-      headerTintColor: '#757575',
-      headerBackTitle: null,
+      header: null,
     }),
   },
   BestInTown: {
     screen: BestInTown,
     navigationOptions: ({navigation}) => ({
-      title: `${navigation.state.params.title}`,
-      headerStyle: headerStyleOptions,
-      headerTintColor: '#757575',
-      headerMode: 'screen',
-      headerBackTitle: null,
+      header: null,
     }),
   },
   Cuisine: {
     screen: CuisineList,
     navigationOptions: ({navigation}) => ({
-      title: `${navigation.state.params.cuisine}`,
-      headerStyle: headerStyleOptions,
-      headerTintColor: '#757575',
-      headerMode: 'screen',
-      headerBackTitle: null,
+      header: null,
     }),
   },
   AllRestro: {
     screen: RestroListing,
     navigationOptions: ({navigation}) => ({
-      title: `${navigation.state.params.title}`,
-      headerStyle: headerStyleOptions,
-      headerMode: 'screen',
-      headerTintColor: '#757575',
-      headerBackTitle: null,
+      header: null,
     }),
   },
   RestroHome: {
     screen: RestaurantHome,
     navigationOptions: ({navigation}) => ({
-      title: `${navigation.state.params.name}`,
-      headerStyle: headerStyleOptions,
-      headerTintColor: '#757575',
-      headerMode: 'screen',
-      headerBackTitle: null,
+      header: null,
     }),
   },
 });

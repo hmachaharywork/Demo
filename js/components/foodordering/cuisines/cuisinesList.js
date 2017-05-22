@@ -3,11 +3,14 @@ import {connect} from 'react-redux';
 import { Text, Image, View, TouchableOpacity, ScrollView, ActivityIndicator, InteractionManager } from 'react-native';
 import { fetchRestaurant, clearCuisine } from '../../../actions/cuisine';
 import { sortDistance } from '../../../utility/sort';
-import { Spinner } from '../../../common';
+import { Spinner, ShoppingCart } from '../../../common';
 import RestroList from '../restrolistview/';
+import Header from '../../Header/';
+import styles from './styles';
 
 var moment = require('moment');
 class CuisineList extends Component {
+
   constructor(props){
     super(props);
   }
@@ -28,8 +31,19 @@ class CuisineList extends Component {
   render() {
     const { restaurants, isInit, isFetching } = this.props.restaurantList;
     const {navigation } = this.props;
+    const { cuisine } = navigation.state.params;
     return(
-      <RestroList navigation={ navigation} restroData={restaurants} isInit={isInit} isFetching={isFetching} />
+      <View style={styles.container}>
+        <Header
+          onBack={()=>this.props.navigation.goBack()}
+          style={styles.topbar}
+          showCart={true}
+          title={cuisine}
+          navigator={this.props.navigation}
+          />
+        <RestroList navigation={ navigation} restroData={restaurants} isInit={isInit} isFetching={isFetching} />
+      </View>
+
     );
   }
 

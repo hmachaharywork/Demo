@@ -22,34 +22,6 @@ class Home extends Component {
       number:0
     }
   }
-
-  static navigationOptions = ({location, navigation, cartSize}) => ({
-    headerTitle: (
-      <View style={styles.searchBox}>
-        <TouchableOpacity
-          style={styles.searchInput}
-          onPress={() => navigation.navigate('Search')}
-          >
-            <Icon name="search" style={styles.searchIcon} />
-            <Text style={styles.searchBoxText}>Search cuisines, restaurants</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.navInput}
-          onPress={() => navigation.navigate('Location')}
-          >
-            <Icon name="navigation" style={styles.navigationIcon} />
-        </TouchableOpacity>
-      </View>
-    ),
-    headerRight: (<ShoppingCart
-      navigation={navigation}
-      onCartClick={()=>navigation.navigate('Cart')}
-      numberOfItemsInCart={cartSize}
-    />),
-  })
-
-
-
   //
   // Before the component mounts
   //
@@ -134,14 +106,26 @@ class Home extends Component {
   }
 
 
-  // renderCart(){
-  //   return(
-  //     <ShoppingCart
-  //     onCartClick={()=>this.gotoCartHome()}
-  //     tab={this.props.tab}
-  //     numberOfItemsInCart={this.state.number}/>
-  //   );
-  // }
+  renderCart(){
+    return(
+      <ShoppingCart
+      onCartClick={()=>this.gotoCartHome()}
+      tab={this.props.tab}
+      numberOfItemsInCart={this.state.number}/>);
+  }
+
+
+  renderTopbarIcon(){
+    return (
+      <TouchableOpacity
+        onPress={()=>this.props.navigation.navigate('DrawerOpen')}
+        style={styles.leftTopbar}
+      >
+        <Icon style={styles.menuIcon} name="menu" size={24} />
+      </TouchableOpacity>
+    );
+  }
+
 
   //
   // Render Swiper
@@ -196,6 +180,25 @@ class Home extends Component {
 
     return (
       <View style={styles.container}>
+        <View style={styles.topbar}>
+          {
+            this.renderTopbarIcon()
+          }
+          <View style={styles.searchBox}>
+            <TouchableOpacity
+              style={styles.searchInput}
+              onPress={() => this.props.navigation.navigate('Search')}
+              >
+                <Icon name="search" style={styles.searchIcon} />
+                <Text style={styles.searchBoxText}>Search cuisines, restaurants</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={[styles.rightTopbar]}>
+            <View style={{marginRight:0,  height:30}}>
+                { this.renderCart() }
+            </View>
+          </View>
+        </View>
         <ScrollView style={styles.scrollbar}>
           {
             this.renderMainSection()
