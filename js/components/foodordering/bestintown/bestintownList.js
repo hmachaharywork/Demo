@@ -31,7 +31,7 @@ class bestintownList extends Component {
     return(
       <View style={styles.container}>
         <Header
-          onBack={()=>navigation.goBack()}
+          onBack={()=>this.props.navigation.goBack()}
           style={styles.topbar}
           title={title}
           showCart={true}

@@ -16,8 +16,8 @@ import RestroListing from '../components/foodordering/restrolist/';
 import RestaurantHome from '../components/foodordering/restrohome/';
 import Search from '../components/foodordering/search';
 import SelectLocation from '../components/foodordering/selectlocation';
+import FoodCart from '../components/cart/index';
 
-//const extraTopMargin = Platform.OS === "ios" ? 20 : 0;
 
 const DrawerIcon = ({navigation}) => {
   return(
@@ -83,6 +83,12 @@ export const FoodStack = StackNavigator({
   RestroHome: {
     screen: RestaurantHome,
     navigationOptions: ({navigation}) => ({
+      header: null,
+    }),
+  },
+  FoodCart: {
+    screen: FoodCart,
+    navigationOptions: () => ({
       header: null,
     }),
   },

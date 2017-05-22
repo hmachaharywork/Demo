@@ -153,7 +153,7 @@ class RestaurantHome extends Component {
       })
   }
   render() {
-    //console.log(this.props);
+    //console.log(this.props.navigation);
     const restaurantObject = this.props.restaurantObject;
     if (restaurantObject.isFetching || restaurantObject.isInit ) {
       return(
@@ -163,7 +163,6 @@ class RestaurantHome extends Component {
             style={styles.topbar}
             title={restaurantObject.menu.title || '...'}
             showCart={true}
-            navigator={this.props.navigation}
           />
           <View style={[styles.container]}>
             <Spinner size="large" />
@@ -177,7 +176,6 @@ class RestaurantHome extends Component {
           style={styles.topbar}
           title={restaurantObject.menu.title}
           showCart={true}
-          navigator={this.props.navigation}
         />
         <ScrollView style={styles.mainBlock}>
           <View style={styles.imageView}>
@@ -226,6 +224,8 @@ function mapStateToProps (state) {
     restaurantObject: state.restaurant,
     cartItem: state.cart.cartItem,
     cart: state.cart,
+    // tab: state.tab,
+    // shoppingBag: state.shoppingBag,
   }
 }
 

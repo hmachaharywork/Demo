@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 import { Text, View, TouchableOpacity } from "react-native";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import { ShoppingCart } from "../../common/";
 import styles from "./styles";
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+
   render() {
-    const { shoppingBag } = this.props;
+    console.log("Header", this.props.navigation);
+    const { shoppingBag, navigation } = this.props;
     const { activeHomepage } = this.props.tab;
     const nextGoId = activeHomepage === 'food' ? 'FoodCart' : 'EcomCart';
     const number = activeHomepage === 'food' ? this.props.cart.size : shoppingBag.size;
@@ -34,6 +41,7 @@ class Header extends Component {
               (this.props.showCart !==undefined && this.props.showCart)
               &&
               <ShoppingCart
+                onCartClick={()=>this.props.navigation.navigate(nextGoId)}
                 tab={activeHomepage}
                 left={2}
                 cartStyle={styles.cartStyle} />
@@ -60,6 +68,7 @@ class Header extends Component {
           &&
             <ShoppingCart
               onCartClick={()=>this.props.navigation.navigate(nextGoId)}
+              //onCartClick={()=> this.cartView(nextGoId)}
               tab={activeHomepage}
               numberOfItemsInCart={number}
               left={2}
@@ -75,7 +84,7 @@ function mapStateToProps (state) {
   return {
     cart:state.cart,
     shoppingBag:state.shoppingBag,
-    tab:state.tab
+    tab:state.tab,
   }
 }
 

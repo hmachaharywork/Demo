@@ -7,7 +7,7 @@ module.exports = StyleSheet.create({
     marginTop: extraTopMargin,
     flex: 1,
     backgroundColor:'#F8F8F8',
-    marginBottom: 10,
+    //marginBottom: 5,
    // paddingBottom: 5,
   },
   topbar:{
@@ -57,6 +57,7 @@ module.exports = StyleSheet.create({
   },
   scrollbar:{
     flex:0.9,
+    //marginBottom: 5,
   },
   searchBox:{
     flex: 0.7,
