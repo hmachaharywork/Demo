@@ -23,7 +23,7 @@ module.exports = StyleSheet.create({
   },
   menuIcon:{
     textAlign: 'center',
-    color: '#757575',
+    color: '#393939',
   },
   title:{
     flex: 0.7,
@@ -204,9 +204,14 @@ module.exports = StyleSheet.create({
   bottomHost:{
     padding:25,
   },
+  userDetails:{
+    backgroundColor: '#fff',
+    margin: 10,
+  },
   profileControlsTab:{
     flexDirection:'row',
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    backgroundColor: '#fff',
   },
   squareTabs:{
     width:40,

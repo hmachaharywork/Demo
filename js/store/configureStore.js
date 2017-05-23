@@ -5,10 +5,12 @@ import thunk from 'redux-thunk'
 import {reducer} from '../reducers/'
 import {persistStore, autoRehydrate} from 'redux-persist'
 import {AsyncStorage} from 'react-native'
+import logger from 'redux-logger'
 
 export default function configureStore(onCompletion:()=>void):any {
 	const enhancer = compose(
-		applyMiddleware(thunk)
+		applyMiddleware(thunk),
+		applyMiddleware(logger)
 	);
 
 	let store = createStore(reducer, enhancer, autoRehydrate());

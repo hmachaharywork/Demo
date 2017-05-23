@@ -4,6 +4,7 @@ import { Text, View, TouchableOpacity, TextInput } from 'react-native';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import Geocoder from 'react-native-geocoder';
 import { setLocation } from '../../../actions/location';
+import Header from '../../Header/';
 import styles from './styles';
 
 class SelectLocation extends Component {
@@ -26,7 +27,7 @@ class SelectLocation extends Component {
       latlng:details.geometry.location
     }
     this.props.setLocation(locationObject);
-    this.props.navigator.pop();
+    this.props.navigation.goBack(null);
   }
   //
   // Detects location
@@ -73,6 +74,11 @@ class SelectLocation extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Header
+          onBack={()=>this.props.navigation.goBack(null)}
+          style={styles.topbar}
+          title={"Select Location"}
+          />
         <GooglePlacesAutocomplete
           placeholder='Search your location'
           textInputProps={{underlineColorAndroid:'rgba(0,0,0,0)'}}

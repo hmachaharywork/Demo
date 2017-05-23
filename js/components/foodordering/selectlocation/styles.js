@@ -1,12 +1,12 @@
 import { StyleSheet, Platform, Dimensions } from 'react-native';
 
-//const extraTopMargin = Platform.OS === "ios" ? 20 : 0;
+const extraTopMargin = Platform.OS === "ios" ? 20 : 0;
 const { width, height } = Dimensions.get("window");
 module.exports = StyleSheet.create({
   container: {
     flex: 1,
-    //marginTop:extraTopMargin,
-    backgroundColor:'#F8F8F8',
+    marginTop:extraTopMargin,
+    backgroundColor:'#FCFCFC',
   },
   geoContainer:{
 
@@ -37,23 +37,25 @@ module.exports = StyleSheet.create({
   inputView:{
     margin:10,
     marginBottom:10,
+    backgroundColor: 'orange'
   },
   textInputContainer:{
     backgroundColor:'transparent',
     borderColor:'transparent',
     borderTopWidth: 0,
-    borderBottomWidth:0
+    borderBottomWidth:0,
   },
   textInput:{
     height:50,
     textAlign:'center',
     color:'white',
     width:width*0.8,
+
+    //marginBottom: 10,
   },
   autocompleteTextInput:{
     height:50,
     borderRadius: 2,
-
     shadowColor: '#757575',
     shadowOffset: {
       width: 0,
@@ -63,9 +65,13 @@ module.exports = StyleSheet.create({
     shadowOpacity: .8,
   },
   listView:{
-
+    marginTop: 20,
+    paddingRight: 20,
   },
   poweredContainer:{
-
+    marginTop: 50,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
   }
 });

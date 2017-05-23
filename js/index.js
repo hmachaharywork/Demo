@@ -2,7 +2,6 @@
 
 import React, {Component} from 'React';
 import App from './routes/drawerNavigation';
-// import { FoodTabs } from './routes/tavNavigation';
 import configureStore from './store/configureStore'
 import {Provider} from 'react-redux';
 

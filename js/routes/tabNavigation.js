@@ -7,8 +7,8 @@ import FoodHome from '../components/foodordering/home/index';
 import EcomHome from '../components/ecommerce/index';
 import TableHome from '../components/tablereservation/index'
 import Orders from '../components/orders/index';
-import Profile from '../components/profile/index';
 import Notification from '../components/notification/index';
+import { ProfileStack } from './ProfileStack';
 
 
 export const FoodTab = TabNavigator({
@@ -31,7 +31,7 @@ export const FoodTab = TabNavigator({
     },
   },
   Profile: {
-    screen: Profile,
+    screen: ProfileStack,
     navigationOptions: {
       tabBarLabel: 'Profile',
       tabBarIcon: ({tintColor}) => <Icon name="person" size={24} color={tintColor}
@@ -93,7 +93,7 @@ export const TableTab = TabNavigator({
     },
   },
   Profile: {
-    screen: Profile,
+    screen: ProfileStack,
     navigationOptions: {
       tabBarLabel: 'Profile',
       tabBarIcon: ({tintColor}) => <Icon name="person" size={24} color={tintColor}
@@ -152,7 +152,7 @@ export const EcomTab = TabNavigator({
     },
   },
   Profile: {
-    screen: Profile,
+    screen: ProfileStack,
     navigationOptions: {
       tabBarLabel: 'Profile',
       tabBarIcon: ({tintColor}) => <Icon name="person" size={24} color={tintColor}

@@ -198,7 +198,7 @@ class Profile extends Component {
         </View>
         <TouchableOpacity
           style={styles.manageAddress}
-          onPress={() => this.props.navigation.navigate('SavedAddr')}
+          onPress={() => this.props.navigation.navigate('Addresses')}
         >
           <MaterialIcon style={styles.manageIcon} name="home" />
           <Text style={styles.manageText}>Manage Addresses</Text>
@@ -224,6 +224,7 @@ class Profile extends Component {
   }
 
 }
+
 function mapStateToProps (state) {
   return {
     user: state.user,
