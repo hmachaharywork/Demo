@@ -44,7 +44,7 @@ const options = {
   contentComponent: SideDrawer,
   contentOptions: {
     activeTintColor: '#0ACED4',
-    inactiveTintColor: '#757575',
+    inactiveTintColor: '#393939',
     activeBackgroundColor: '#ffffff',
     labelStyle: {
       marginLeft: 0,

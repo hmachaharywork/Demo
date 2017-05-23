@@ -6,7 +6,7 @@ module.exports = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: extraTopMargin,
-    backgroundColor:'#F8F8F8',
+    backgroundColor:'#FCFCFC',
   },
   orderlistContainer: {
     backgroundColor: '#fff',

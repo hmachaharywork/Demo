@@ -33,7 +33,7 @@ module.exports = StyleSheet.create({
   },
   backIcon: {
     textAlign: 'center',
-    color: '#757575',
+    color: '#393939',
     fontSize: 22,
   },
   blockDetails: {
@@ -42,7 +42,7 @@ module.exports = StyleSheet.create({
     textAlign: "center",
   },
   headerText:{
-    color:'grey',
+    color:'#393939',
     fontSize:18,
     padding: 5,
     textAlign: "center",

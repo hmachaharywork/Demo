@@ -54,7 +54,7 @@ export const FoodTab = TabNavigator({
   swipeEnabled: false,
   tabBarOptions: {
     activeTintColor: '#0ACED4',
-    inactiveTintColor: '#757575',
+    inactiveTintColor: '#393939',
     upperCaseLabel: false,
     showIcon: true,
     style: {
@@ -116,7 +116,7 @@ export const TableTab = TabNavigator({
   swipeEnabled: false,
   tabBarOptions: {
     activeTintColor: '#0ACED4',
-    inactiveTintColor: '#757575',
+    inactiveTintColor: '#393939',
     upperCaseLabel: false,
     showIcon: true,
     style: {
@@ -175,7 +175,7 @@ export const EcomTab = TabNavigator({
   swipeEnabled: false,
   tabBarOptions: {
     activeTintColor: '#0ACED4',
-    inactiveTintColor: '#757575',
+    inactiveTintColor: '#393939',
     upperCaseLabel: false,
     showIcon: true,
     style: {

@@ -153,7 +153,6 @@ class Profile extends Component {
           <View style={[styles.topGuest, {paddingTop:50}]}>
             <Image
               style={{width:200, height: 200}}
-              // style={styles.userPicStyle}
               source={require('../../assets/not-logged-in.png')}
               />
             <Text style={styles.guestOopsText}>Oops! You are not logged in</Text>
@@ -162,17 +161,17 @@ class Profile extends Component {
             <Text style={styles.guestAdviceText}>TO ORDER YOU MUST HAVE AN ACCOUNT</Text>
           </View>
           <View style={styles.bottomGuest}>
-             <TouchableOpacity
-              onPress={()=>this.setState({showLoginView:true})}
-              style={[styles.guestButton,{marginRight:20, borderColor:'#7f8c8d', borderWidth: 1}]}>
-              <Text style={[styles.guestButtonText,{fontFamily: 'Helvetica', color: "#7f8c8d"}]}>SIGN UP</Text>
-            </TouchableOpacity>
-            <View style={styles.guestButtonSeperator}></View>
             <TouchableOpacity
               onPress={()=>this.setState({showLoginView:true})}
-              style={[styles.guestButton,{marginLeft:20, backgroundColor: '#6bdbfd',}]}>
-              <Text style={[styles.guestButtonText,{color: '#fff', fontFamily: 'Helvetica',  fontWeight: 'bold' }]}>SIGN IN</Text>
+              style={[styles.guestButton,{marginRight:22,}]}>
+              <Text style={[styles.guestButtonText,{color: '#0ACED4', fontFamily: 'Helvetica', }]}>LOGIN</Text>
             </TouchableOpacity>
+             <TouchableOpacity
+              onPress={()=>this.setState({showLoginView:true})}
+              style={[styles.guestButton,{marginLeft:22,}]}>
+              <Text style={[styles.guestButtonText,{fontFamily: 'Helvetica', color: "#0ACED4"}]}>SIGN UP</Text>
+            </TouchableOpacity>
+
           </View>
         </View>
       );

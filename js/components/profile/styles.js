@@ -53,6 +53,7 @@ module.exports = StyleSheet.create({
   profile:{
     flex:1,
     alignItems:'center',
+    backgroundColor: '#FCFCFC',
   },
   topGuest:{
     // padding:10,
