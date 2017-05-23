@@ -6,12 +6,16 @@ module.exports = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: extraTopMargin,
-    backgroundColor:'#F8F8F8',
+    backgroundColor:'#FCFCFC',
   },
   topbar:{
     flex:0.1,
     backgroundColor: '#fff',
     flexDirection: 'row',
+    shadowColor: 'black',
+    shadowOffset: {width: 0, height: 1},
+    shadowRadius: 1,
+    shadowOpacity: 0.3,
   },
   leftTopbar:{
     flex:0.15,
@@ -112,27 +116,89 @@ module.exports = StyleSheet.create({
   // Style for Host(logged in)
   //
   profileView:{
-    // backgroundColor:"#fff",
+    //backgroundColor:"red",
   },
   topHost:{
+    flexDirection: 'row',
+    flex: 1,
+    borderRadius: 2,
+    backgroundColor: '#fff',
     // flexDirection:'row',
-    padding:20,
-    paddingTop:10,
+    padding:10,
+    // paddingTop:10,
     justifyContent: "center",
     alignItems: "center",
+    shadowColor: '#757575',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowRadius: 2,
+    shadowOpacity: .8,
+  },
+  userInfo: {
+    height: 80,
+    padding: 10,
+    paddingTop: 15,
+    flex: .55,
+    marginLeft: 15,
+    justifyContent: 'center',
+  },
+  editProfile:{
+    height: 45,
+    flex: .15,
+    alignSelf: 'center',
+    justifyContent: 'flex-start',
+  },
+  editIcon: {
+    color: '#393939',
+    fontSize: 20,
+    alignSelf: 'center',
+  },
+  welcomeText:{
+    fontFamily: 'Helvetica',
+    fontSize: 18,
+    color: '#393939',
   },
   userPhone:{
     paddingTop: 10,
     fontSize:16,
-    color:'silver',
+    color: '#393939',
     fontFamily: 'Helvetica',
     // alignSelf:'center',
   },
-  divider:{
+  manageAddress:{
+    borderRadius: 2,
+    marginTop: 20,
+    backgroundColor: '#fff',
+    height: 50,
+    flexDirection: 'row',
+    flex: 1,
+    shadowColor: '#757575',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowRadius: 2,
+    shadowOpacity: .8,
+    justifyContent: 'center',
     alignSelf: 'center',
-    width:width - 60,
-    height: 1,
-    backgroundColor: 'rgba(0,120,60,0.3)',
+
+  },
+  manageText:{
+    flex: .6,
+    fontSize: 18,
+    alignSelf: 'center',
+    alignItems: 'center',
+    fontFamily: 'Helvetica',
+    color: '#393939',
+  },
+  manageIcon: {
+    flex: .15,
+    fontSize: 26,
+    alignSelf: 'center',
+    textAlign: 'center',
+    color: '#393939',
   },
   bottomHost:{
     padding:25,
@@ -252,27 +318,46 @@ module.exports = StyleSheet.create({
     margin:10,
   },
   signOutBlock:{
+    flexDirection: 'row',
+    flex: 1,
+    marginTop: 80,
     alignSelf:"center",
     marginBottom: 30,
-    borderColor: '#e74c3c',
-    borderWidth: 1,
-    backgroundColor: "#fff",
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 10,
-    paddingBottom: 10
+    borderRadius: 2,
+    paddingLeft: 50,
+    paddingRight: 50,
+    paddingTop: 12,
+    paddingBottom: 12,
+    backgroundColor: '#0ACED4',
+    shadowColor: '#757575',
+    shadowOffset: {
+      width: 0,
+      height: 1
+    },
+    shadowRadius: 1,
+    shadowOpacity: .5,
   },
   signOutText:{
-    color:"#e74c3c",
+    color:"#fff",
     fontWeight: "bold",
     fontSize: 15,
     fontFamily: "Helvetica"
   },
   userPicView:{
     flexDirection:"row",
+    backgroundColor: '#0ACED4',
+    flex: .25,
+    alignSelf: 'center',
+    height: 80,
+    width: 80,
+    borderRadius: 40,
     // alignItems: 'center',
-    // justifyContent: 'center',
-    // backgroundColor:'orange'
+    justifyContent: 'center',
+  },
+  userInitial: {
+    color: '#fff',
+    fontSize: 35,
+    alignSelf: 'center',
   },
   textInputTextStyle:{
     color:"#000",

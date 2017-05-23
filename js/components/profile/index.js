@@ -133,6 +133,10 @@ class Profile extends Component {
     })
   }
 
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   //
   // Render Profile
   //
@@ -180,32 +184,42 @@ class Profile extends Component {
      <View style={styles.profileView}>
         <View style={styles.topHost}>
           <View style={styles.userPicView}>
-            <Image
-              // style={{width:25, height: 25}}
-              style={styles.userPicStyle}
-              source={require('../../assets/default-user-color.png')}
-              />
+            <Text style={styles.userInitial}>{this.state.username.charAt(0).toUpperCase()}</Text>
           </View>
-          <Text style={styles.userPhone}>{this.state.phone}</Text>
+          <View style={styles.userInfo}>
+              <Text style={styles.welcomeText}>Welcome {this.capitalizeFirstLetter(this.state.username.split(' ')[0])}</Text>
+              <Text style={styles.userPhone}>+{this.state.phone}</Text>
+          </View>
+          <TouchableOpacity
+            style={styles.editProfile}
+            onPress={() => this.props.navigation.navigate('EditProfile')}
+          >
+            <MaterialIcon style={styles.editIcon} name="edit" />
+          </TouchableOpacity>
         </View>
-        <View style={[styles.divider, {marginTop:0}]} />
+        <TouchableOpacity
+          style={styles.manageAddress}
+          onPress={() => this.props.navigation.navigate('SavedAddr')}
+        >
+          <MaterialIcon style={styles.manageIcon} name="home" />
+          <Text style={styles.manageText}>Manage Addresses</Text>
+          <MaterialIcon style={styles.manageIcon}name="chevron-right" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.manageAddress}
+          onPress={() => this.props.navigation.navigate('Location')}
+        >
+          <MaterialIcon style={styles.manageIcon} name="location-on" />
+          <Text style={styles.manageText}>Change Location</Text>
+          <MaterialIcon style={styles.manageIcon}name="chevron-right" />
+        </TouchableOpacity>
 
-        <View style={styles.bottomHost}>
-            <EditDetails username={this.state.username} email={this.state.email}/>
-            <View
-              style={styles.profileControlsTab}>
-              <Text style={styles.profileControlsText}>SAVED ADDRESS</Text>
-            </View>
-            {
-              this.renderDeliveryAddress(address)
-            }
-        </View>
         <TouchableOpacity
             style={styles.signOutBlock}
             onPress={()=>this.props.logout()}
             >
             <Text style={styles.signOutText}>SIGN OUT</Text>
-          </TouchableOpacity>
+        </TouchableOpacity>
       </View>
     );
   }
