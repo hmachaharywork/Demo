@@ -5,9 +5,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { logout } from '../../actions/login';
 import LoginView from './LoginView';
-import EditDetails from './EditDetails';
-import { setActiveTab } from '../../actions';
-import { fetchUserSavedAddresses, deleteAddress } from '../../actions/user';
 import styles from './styles';
 
 class Profile extends Component {
@@ -15,9 +12,7 @@ class Profile extends Component {
     super(props)
     this.state={
       showLoginView:false,
-      editableUserDetails:false,
       showUpdateButton:false,
-      // showSignUpView:false
     }
   }
 
@@ -27,7 +22,6 @@ class Profile extends Component {
   componentWillMount(){
     const userobj = this.props.user
     if (userobj.user !== undefined ) {
-      this.props.fetchUserSavedAddresses();
       this.setState({
         username:userobj.user.username,
         email: userobj.user.email,
@@ -36,14 +30,30 @@ class Profile extends Component {
     }
   }
   componentWillReceiveProps(nextProps){
-    // console.log("The nextProps is",nextProps.user);
+    //console.log(nextProps.us)
     if (nextProps.user.user) {
       this.setState({
         showLoginView:false,
         username:nextProps.user.user.username,
         email: nextProps.user.user.email,
+        phone: nextProps.user.user.phn,
       })
     }
+  }
+
+  //
+  // Go to login View
+  //
+
+  hideLoginView(){
+    this.setState({
+      showLoginView:false
+    })
+  }
+
+
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   renderTopbarIcon(){
@@ -57,91 +67,10 @@ class Profile extends Component {
     );
   }
 
-  render(){
-    if (this.state.showLoginView) {
-      return <LoginView hideLoginView={()=>this.setState({showLoginView:false})}/>
-    }
-    return(
-      <View style={styles.container}>
-        <View style={styles.topbar}>
-          {
-            this.renderTopbarIcon()
-          }
-          <View style={styles.title}>
-            <Text style={styles.titleText}>Profile</Text>
-          </View>
-          <View style={styles.clearFix}>
-
-          </View>
-        </View>
-        <ScrollView style={styles.mainBlock}>
-          {this.renderProfile()}
-        </ScrollView>
-      </View>
-    );
-  }
-  //
-  // Go to login View
-  //
-
-  hideLoginView(){
-    this.setState({
-      showLoginView:false
-    })
-  }
-
-  editAddress(address){
-    this.props.navigator.push({
-      id:'edit-address',
-      address: address
-    })
-  }
-  renderAddress(item, index){
-    return (
-      <View key={index}>
-        <View style={styles.savedaddress}>
-          <View style={styles.leftSavedAddress}>
-            <Text style={styles.addressHeader}>{item.address_type.toUpperCase()}</Text>
-            <View style={styles.addressBody}>
-              <Text style={styles.addressText}>{item.address_line_1}, {item.address_line_2}, {item.city}, {item.state}, {item.zip}</Text>
-            </View>
-          </View>
-            <TouchableOpacity
-              onPress={()=>this.editAddress(item)}
-              style={styles.editAddressButton}
-            >
-              <Text style={styles.editAddressButtonText}>Edit</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={()=>this.props.deleteAddress(item.id)}
-              >
-              <Icon name="times" style={{paddingLeft:20, fontSize:18, color:"rgba(255,0,0,0.3)"}}/>
-            </TouchableOpacity>
-        </View>
-      </View>
-    )
-  }
-  //
-  // Render saved address
-  //
-  renderDeliveryAddress(address){
-    if (address === undefined || address.length === 0) {
-      return null
-    }
-    return address.map((item, index)=>{
-      return this.renderAddress(item,index);
-    })
-  }
-
-  capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
   //
   // Render Profile
   //
   renderProfile(){
-    // console.log("The nextProps in login", this.props.user);
     const user = this.props.user.user;
     const address = this.props.user.saved_address;
     if ( !user || user === undefined) {
@@ -223,6 +152,30 @@ class Profile extends Component {
     );
   }
 
+  render(){
+    if (this.state.showLoginView) {
+      return <LoginView hideLoginView={()=>this.setState({showLoginView:false})}/>
+    }
+    return(
+      <View style={styles.container}>
+        <View style={styles.topbar}>
+          {
+            this.renderTopbarIcon()
+          }
+          <View style={styles.title}>
+            <Text style={styles.titleText}>Profile</Text>
+          </View>
+          <View style={styles.clearFix}>
+
+          </View>
+        </View>
+        <ScrollView style={styles.mainBlock}>
+          {this.renderProfile()}
+        </ScrollView>
+      </View>
+    );
+  }
+
 }
 
 function mapStateToProps (state) {
@@ -233,10 +186,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    setActiveTab:(tab)=>dispatch(setActiveTab(tab)),
     logout: () => dispatch(logout()),
-    deleteAddress: (id) => dispatch(deleteAddress(id)),
-    fetchUserSavedAddresses: () => dispatch(fetchUserSavedAddresses())
   }
 }
 
