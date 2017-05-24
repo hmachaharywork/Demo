@@ -34,10 +34,13 @@ class EditDetails extends Component {
   }
   submitOtp(){
     if (this.state.otp === "" || this.state.otp === undefined) {
-      this.setState({ error: true, errorMessage: "OTP cannot be blank" });
+      this.props.alertWithType('error', 'Error', "OTP cannot be blank");
       return ;
     }else if (this.state.password1 !== this.state.password2) {
-      this.setState({ error: true, errorMessage: "Entered password doesn't match" });
+      this.props.alertWithType('error', 'Error', "Entered password did not match");
+      return ;
+    }else if (this.state.password1 === "" || this.state.password2 === undefined) {
+      this.props.alertWithType('error', 'Error', "Password cannot be blank");
       return ;
     }
     this.setState({
@@ -48,62 +51,66 @@ class EditDetails extends Component {
   render() {
     return (
       <View style={[styles.mainBlock,{alignItems: 'center', alignSelf: 'center'}]}>
-        <View style={{height:30}}>
-          {
-            this.state.error
-            &&
-            <Text style={[{color:"red", marginTop:15}]}>{this.state.errorMessage}</Text>
-          }
+        <View style={styles.loginBlock}>
+          <TextInput
+            style={[styles.loginInput, {paddingLeft: 20}]}
+            textInputStyle={styles.textInputTextStyle}
+            tintColor={"rgba(0,120,60,0.5)"}
+            placeholderTextColor ={"grey"}
+            placeholder="Enter OTP"
+            keyboardType={"number-pad"}
+            value={this.state.otp}
+            onChangeText={(otp) => this.setState({otp:otp, error:false})}
+            onFocus={()=>this.setState({otp:''})}
+          />
         </View>
-        <TextInput
-          style={{ height: 48, width: width * 0.75, margin: 8, paddingLeft:5 }}
-          textInputStyle={styles.textInputTextStyle}
-          tintColor={"rgba(0,120,60,0.5)"}
-          placeholderTextColor ={"grey"}
-          placeholder="Enter OTP"
-          keyboardType={"number-pad"}
-          value={this.state.otp}
-          onChangeText={(otp) => this.setState({otp:otp, error:false})}
-          onFocus={()=>this.setState({otp:''})}
-        />
-        <TextInput
-          style={{ height: 48, width: width * 0.75, margin: 8, paddingLeft:5 }}
-          textInputStyle={styles.textInputTextStyle}
-          tintColor={"rgba(0,120,60,0.5)"}
-          placeholderTextColor ={"grey"}
-          placeholder="Enter password"
-          secureTextEntry={true}
-          value={this.state.password1}
-          onChangeText={(pass) => this.setState({password1:pass, error:false})}
-          onFocus={()=>this.setState({password1:''})}
-        />
-        <TextInput
-          style={{ height: 48, width: width * 0.75, margin: 8, paddingLeft:5 }}
-          textInputStyle={styles.textInputTextStyle}
-          tintColor={"rgba(0,120,60,0.5)"}
-          placeholderTextColor ={"grey"}
-          placeholder="Confirm password"
-          secureTextEntry={true}
-          value={this.state.password2}
-          onChangeText={(pass) => this.setState({password2:pass, error:false})}
-          onFocus={()=>this.setState({password2:''})}
-        />
-        <TouchableOpacity
-          onPress={()=>this.submitOtp()}
-          disabled={this.state.disableBtn}
-          style={[styles.guestButton,{marginTop:25}]}
-          >
-          {
-            this.state.showSpinner
-            &&
+        <View style={styles.loginBlock}>
+          <TextInput
+            style={[styles.loginInput, {paddingLeft: 20}]}
+            textInputStyle={styles.textInputTextStyle}
+            tintColor={"rgba(0,120,60,0.5)"}
+            placeholderTextColor ={"grey"}
+            placeholder="Enter password"
+            secureTextEntry={true}
+            value={this.state.password1}
+            onChangeText={(pass) => this.setState({password1:pass, error:false})}
+            onFocus={()=>this.setState({password1:''})}
+          />
+        </View>
+        <View style={styles.loginBlock}>
+          <TextInput
+            style={[styles.loginInput, {paddingLeft: 20}]}
+            textInputStyle={styles.textInputTextStyle}
+            tintColor={"rgba(0,120,60,0.5)"}
+            placeholderTextColor ={"grey"}
+            placeholder="Confirm password"
+            secureTextEntry={true}
+            value={this.state.password2}
+            onChangeText={(pass) => this.setState({password2:pass, error:false})}
+            onFocus={()=>this.setState({password2:''})}
+          />
+        </View>
+        {
+          this.state.showSpinner
+          &&
+          <View style={styles.guestButton}>
             <Spinner style={[styles.guestButtonText]} size={"small"}/>
-          }
+          </View>
+        }
+
+
           {
             !this.state.showSpinner
             &&
-            <Text style={[styles.guestButtonText,{color: 'rgba(0,120,60,0.5)'}]}>SUBMIT</Text>
+            <TouchableOpacity
+              onPress={()=>this.submitOtp()}
+              disabled={this.state.disableBtn}
+              style={styles.signOutBlock}
+            >
+              <Text style={styles.signOutText}>SUBMIT</Text>
+            </TouchableOpacity>
           }
-        </TouchableOpacity>
+
       </View>
     );
   }

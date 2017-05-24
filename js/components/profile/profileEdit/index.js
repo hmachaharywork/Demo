@@ -28,14 +28,6 @@ class ProfileEdit extends Component {
       email: userobj.user.email,
     })
   }
-  componentWillReceiveProps(nextProps){
-    if (nextProps.user.user) {
-      this.setState({
-        username:nextProps.user.user.username,
-        email: nextProps.user.user.email,
-      })
-    }
-  }
 
 
   updateUserDetails(){

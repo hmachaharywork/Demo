@@ -88,9 +88,35 @@ module.exports = StyleSheet.create({
     paddingTop:25,
     justifyContent:'space-between'
   },
+
+  signOutBlock:{
+    marginTop: 50,
+    alignSelf:"center",
+    marginBottom: 30,
+    borderRadius: 2,
+    paddingLeft: 50,
+    paddingRight: 50,
+    paddingTop: 12,
+    paddingBottom: 12,
+    backgroundColor: '#0ACED4',
+    shadowColor: '#757575',
+    shadowOffset: {
+      width: 0,
+      height: 1
+    },
+    shadowRadius: 1,
+    shadowOpacity: .5,
+  },
+  signOutText:{
+    color:"#fff",
+    fontWeight: "bold",
+    fontSize: 15,
+    fontFamily: "Helvetica"
+  },
  guestButton:{
     width:130,
     height:45,
+    marginTop: 50,
    // backgroundColor:'#fff',
     alignSelf:'center',
     justifyContent: 'center',
@@ -103,8 +129,8 @@ module.exports = StyleSheet.create({
   guestButtonText:{
     textAlign:'center',
     padding:10,
-    fontSize:18,
-    fontFamily: "Roboto-Light"
+    fontSize:16,
+    //fontFamily: "Roboto-Light"
   },
   guestButtonSeperator:{
     height:50,
@@ -238,13 +264,7 @@ module.exports = StyleSheet.create({
   //
   // Styles for login view
   //
-  phoneCountryCode:{
-    // textAlign:'center',
-     color: '#7f8c8d',
-    // paddingRight:5,
-    fontSize:18,
-    // paddingTop:0,
-  },
+
   phoneInput:{
     width:width-120,
   },
@@ -323,31 +343,16 @@ module.exports = StyleSheet.create({
     alignItems: "center",
     margin:10,
   },
-  signOutBlock:{
-    flexDirection: 'row',
-    flex: 1,
-    marginTop: 80,
-    alignSelf:"center",
-    marginBottom: 30,
-    borderRadius: 2,
-    paddingLeft: 50,
-    paddingRight: 50,
-    paddingTop: 12,
-    paddingBottom: 12,
-    backgroundColor: '#0ACED4',
-    shadowColor: '#757575',
-    shadowOffset: {
-      width: 0,
-      height: 1
-    },
-    shadowRadius: 1,
-    shadowOpacity: .5,
-  },
-  signOutText:{
-    color:"#fff",
-    fontWeight: "bold",
-    fontSize: 15,
-    fontFamily: "Helvetica"
+  buttonExtra:{
+    // color: '#fff',
+    // //alignSelf:"center",
+    // // marginBottom: 30,
+    // borderRadius: 2,
+    // paddingLeft: 50,
+    // paddingRight: 50,
+    // // paddingTop: 12,
+    // // paddingBottom: 12,
+    // backgroundColor: '#0ACED4',
   },
   userPicView:{
     flexDirection:"row",
@@ -365,8 +370,37 @@ module.exports = StyleSheet.create({
     fontSize: 35,
     alignSelf: 'center',
   },
+
+  phoneCountryCode:{
+    //flex: .2,
+     color: '#7f8c8d',
+    fontSize:18,
+    width: width * 0.15,
+    paddingLeft: 10,
+
+  },
+  loginBlock:{
+    marginTop:10,
+    backgroundColor: '#fff',
+    flexDirection: "row",
+    width: width * 0.95,
+    alignItems: 'center',
+    borderRadius: 2,
+    shadowColor: '#757575',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowRadius: 2,
+    shadowOpacity: .8
+  },
+
+  loginInput:{
+    height: 50,
+    width: width * 0.77,
+    color: '#757575',
+  },
   textInputTextStyle:{
-    color:"#000",
-    marginLeft:10
+    color:'#757575',
   }
 });

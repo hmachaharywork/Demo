@@ -6,6 +6,8 @@ import EmailValidator from "../../utility/validate_email";
 import { Spinner } from "../../common/";
 import PhoneValidator from "../../utility/validate_phone";
 import ForgotPasswordView from './ForgotPassword';
+import DropdownAlert from 'react-native-dropdownalert';
+import Header from '../Header';
 import styles from './styles';
 
 const width = Dimensions.get("window").width;
@@ -50,6 +52,9 @@ class LoginView extends Component {
          showSpinner: false,
          errorMessage: "Invalid credentials"
        })
+      //  this.dropdown.alertWithType('error', 'Error', "Invalid credentials");
+      //  console.log("invalid credentials");
+
     }
     else if (loginObject.number !== null && !loginObject.notRegistered) {
         this.setState({
@@ -74,7 +79,8 @@ class LoginView extends Component {
         showSpinner:false,
         error: true,
         errorMessage: "Registration failed"
-      })
+      });
+      // this.dropdown.alertWithType('error', 'Error', "Registration failed");
     }
     else if (loginObject.requestingOtpValidation && !loginObject.otpFailed) {
       this.setState({
@@ -86,6 +92,7 @@ class LoginView extends Component {
          showSpinner: false,
          errorMessage: "Invalid OTP"
        })
+      // this.dropdown.alertWithType('error', 'Error', "Invalid OTP");
     }else if (nextProps.forgotPassword.success) {
       this.setState({
         showForgotPasswordView:true
@@ -98,23 +105,19 @@ class LoginView extends Component {
     }
   }
 
-  //
-  //
-  //
-  // exitLogin(){
-  //   this.props.clearLoginRedux();
-  //   this.props.hideLoginView();
-  // }
-
   render(){
     return(
       <View style={styles.container}>
-        {/* <Header
+        <Header
           style={styles.topbar}
           title={"Enter Details"}
-          onBack={()=>this.exitLogin()}
-          /> */}
+          onBack={()=>this.props.navigation.goBack(null)}
+          />
          {this.renderLogin()}
+         <DropdownAlert
+           ref={(ref) => this.dropdown = ref}
+           onClose={() => this.dropdown.onClose()}
+         />
       </View>
     );
   }
@@ -125,7 +128,7 @@ class LoginView extends Component {
   validatePhone(phone) {
     const validate = PhoneValidator.validate(phone);
     if (validate.error) {
-      this.setState({ error: validate.error, errorMessage: validate.errorMessage });
+      this.dropdown.alertWithType('error', 'Error', validate.errorMessage)
       return ;
     }
     this.submitNumber(phone);
@@ -138,10 +141,10 @@ class LoginView extends Component {
   validateEmail(name,email) {
     const validate = EmailValidator.validate(email);
     if (name === "") {
-      this.setState({ error: validate.error, errorMessage: "Name cannot be blank" });
+      this.dropdown.alertWithType('error', 'Error', "Name cannot be blank")
       return ;
     }else if (validate.error) {
-      this.setState({ error: validate.error, errorMessage: validate.errorMessage });
+      this.dropdown.alertWithType('error', 'Error', validate.errorMessage)
       return ;
     }
     this.submitRegisterDetails(name, email);
@@ -156,19 +159,23 @@ class LoginView extends Component {
   }
 
   submitPass(){
+    if(this.state.password.length === 0) {
+      this.dropdown.alertWithType('error', 'Error', "Password cannot be blank");
+      return;
+    }
     this.props.loginUser(this.state.password);
   }
 
 
   submitOtp(){
     if (this.state.otp === "" || this.state.otp === undefined) {
-      this.setState({ error: true, errorMessage: "OTP cannot be blank" });
+      this.dropdown.alertWithType('error', 'Error', "OTP cannot be blank");
       return ;
     }else if (this.state.password1 !== this.state.password2) {
-      this.setState({ error: true, errorMessage: "Entered password doesn't match" });
+      this.dropdown.alertWithType('error', 'Error', "Entered password did not match");
       return ;
     }else if (this.state.password1 === "" || this.state.password2 === undefined) {
-      this.setState({ error: true, errorMessage: "Password cannot be blank " });
+      this.dropdown.alertWithType('error', 'Error', "Password cannot be blank");
       return ;
     }
     this.props.submitOtpAndPassword(this.state.otp, this.state.password1)
@@ -192,214 +199,213 @@ class LoginView extends Component {
       showForgotPasswordView:true
     })
   }
+
+  passwordCheck(message) {
+    this.dropdown.alertWithType('error', 'Error', message);
+  }
+
   //
   // Render Profile
   //
   renderLogin(){
     if (this.state.showForgotPasswordView) {
-      return <ForgotPasswordView />
+      return <ForgotPasswordView alertWithType={this.dropdown.alertWithType}/>
     }
     if (this.state.notRegistered) {
       return(
-        <View style={[styles.mainBlock,{alignItems: 'center', alignSelf: 'center', marginTop:25 }]}>
-          <Text style={styles.suggestText}>This phone number is not registered with us.</Text>
-
-          <View style={{height:30}}>
-            {
-              this.state.error
-              &&
-              <Text style={[{color:"red", marginTop:15}]}>{this.state.errorMessage}</Text>
-            }
+        <View style={[styles.mainBlock,{alignItems: 'center', alignSelf: 'center' }]}>
+          {/* <Text style={styles.suggestText}>This phone number is not registered with us.</Text> */}
+          <View style={styles.loginBlock}>
+            <TextInput
+              style={[styles.loginInput, {paddingLeft: 20}]}
+              textInputStyle={styles.textInputTextStyle}
+              tintColor={"#7f8c8d"}
+              placeholderTextColor ={"#7f8c8d"}
+              placeholder="Enter your name"
+              placeholderTextColor ={"#7f8c8d"}
+              value={this.state.name}
+              onChangeText={(name) => this.setState({name:name, error:false})}
+            />
           </View>
-          <TextInput
-            style={{ height: 48, width: width * 0.75, margin: 8, paddingLeft:5 }}
-            textInputStyle={styles.textInputTextStyle}
-            tintColor={"#7f8c8d"}
-            placeholderTextColor ={"#7f8c8d"}
-            placeholder="Enter your name"
-            placeholderTextColor ={"#7f8c8d"}
-            value={this.state.name}
-            onChangeText={(name) => this.setState({name:name, error:false})}
-          />
-          <TextInput
-            style={{ height: 48, width: width * 0.75, margin: 8, paddingLeft:5 }}
-            textInputStyle={styles.textInputTextStyle}
-            tintColor={"#7f8c8d"}
-            placeholderTextColor ={"#7f8c8d"}
-            placeholder="Enter your email"
-            keyboardType={'email-address'}
-            autoCapitalize={"none"}
-            value={this.state.email}
-            onChangeText={(email) => this.setState({email:email, error:false})}
-            onSubmitEditing={() => this.validateEmail(this.state.name, this.state.email)}
-          />
-
-          <TouchableOpacity
-            onPress={()=>this.validateEmail(this.state.name, this.state.email)}
-            style={[styles.guestButton,{marginTop:25, backgroundColor: '#6bdbfd'}]}
-            >
-            {
-              this.state.showSpinner
-              &&
+          <View style={styles.loginBlock}>
+            <TextInput
+              style={[styles.loginInput, {paddingLeft: 20}]}
+              textInputStyle={styles.textInputTextStyle}
+              tintColor={"#7f8c8d"}
+              placeholderTextColor ={"#7f8c8d"}
+              placeholder="Enter your email"
+              keyboardType={'email-address'}
+              autoCapitalize={"none"}
+              value={this.state.email}
+              onChangeText={(email) => this.setState({email:email, error:false})}
+              onSubmitEditing={() => this.validateEmail(this.state.name, this.state.email)}
+            />
+          </View>
+          {
+            this.state.showSpinner
+            &&
+            <View style={styles.guestButton}>
               <Spinner style={[styles.guestButtonText]} size={"small"}/>
-            }
-            {
-              !this.state.showSpinner
-              &&
-              <Text style={[styles.guestButtonText,{fontFamily: 'Helvetica', color: '#fff', fontWeight:'bold'}]}>SUBMIT</Text>
-            }
-          </TouchableOpacity>
+            </View>
+          }
+          {
+            !this.state.showSpinner
+            &&
+            <TouchableOpacity
+              onPress={()=>this.validateEmail(this.state.name, this.state.email)}
+              style={styles.signOutBlock}
+            >
+              <Text style={styles.signOutText}>SUBMIT</Text>
+            </TouchableOpacity>
+          }
+
         </View>
       )
     }
     if (this.state.showEnterOtpView) {
       return (
         <View style={[styles.mainBlock,{alignItems: 'center', alignSelf: 'center'}]}>
-          <View style={{height:30}}>
-            {
-              this.state.error
-              &&
-              <Text style={[{color:"red", marginTop:15}]}>{this.state.errorMessage}</Text>
-            }
+          <View style={styles.loginBlock}>
+            <TextInput
+              style={[styles.loginInput, {paddingLeft: 20}]}
+              textInputStyle={styles.textInputTextStyle}
+              tintColor={"#7f8c8d"}
+              placeholderTextColor ={"#7f8c8d"}
+              placeholder="Enter OTP"
+              keyboardType={"number-pad"}
+              value={this.state.otp}
+              onChangeText={(otp) => this.setState({otp:otp, error:false})}
+              onFocus={()=>this.setState({otp:''})}
+            />
           </View>
-          <TextInput
-            style={{ height: 48, width: width * 0.75, margin: 8, paddingLeft:5 }}
-            textInputStyle={styles.textInputTextStyle}
-            tintColor={"#7f8c8d"}
-            placeholderTextColor ={"#7f8c8d"}
-            placeholder="Enter OTP"
-            keyboardType={"number-pad"}
-            value={this.state.otp}
-            onChangeText={(otp) => this.setState({otp:otp, error:false})}
-            onFocus={()=>this.setState({otp:''})}
-          />
-          <TextInput
-            style={{ height: 48, width: width * 0.75, margin: 8, paddingLeft:5 }}
-            textInputStyle={styles.textInputTextStyle}
-            tintColor={"#7f8c8d"}
-            placeholderTextColor ={"#7f8c8d"}
-            placeholder="Enter password"
-            secureTextEntry={true}
-            value={this.state.password1}
-            onChangeText={(pass) => this.setState({password1:pass, error:false})}
-            onFocus={()=>this.setState({password1:''})}
-          />
-          <TextInput
-            style={{ height: 48, width: width * 0.75, margin: 8, paddingLeft:5 }}
-            textInputStyle={styles.textInputTextStyle}
-            tintColor={"#7f8c8d"}
-            placeholderTextColor ={"#7f8c8d"}
-            placeholder="Confirm password"
-            secureTextEntry={true}
-            value={this.state.password2}
-            onChangeText={(pass) => this.setState({password2:pass, error:false})}
-            onFocus={()=>this.setState({password2:''})}
-          />
-          <TouchableOpacity
-            onPress={()=>this.submitOtp()}
-            style={[styles.guestButton,{marginTop:25}]}
-            >
-            {
-              this.state.showSpinner
-              &&
+          <View style={styles.loginBlock}>
+            <TextInput
+              style={[styles.loginInput, {paddingLeft: 20}]}
+              textInputStyle={styles.textInputTextStyle}
+              tintColor={"#7f8c8d"}
+              placeholderTextColor ={"#7f8c8d"}
+              placeholder="Enter password"
+              secureTextEntry={true}
+              value={this.state.password1}
+              onChangeText={(pass) => this.setState({password1:pass, error:false})}
+              onFocus={()=>this.setState({password1:''})}
+            />
+          </View>
+          <View style={styles.loginBlock}>
+            <TextInput
+              style={[styles.loginInput, {paddingLeft: 20}]}
+              textInputStyle={styles.textInputTextStyle}
+              tintColor={"#7f8c8d"}
+              placeholderTextColor ={"#7f8c8d"}
+              placeholder="Confirm password"
+              secureTextEntry={true}
+              value={this.state.password2}
+              onChangeText={(pass) => this.setState({password2:pass, error:false})}
+              onFocus={()=>this.setState({password2:''})}
+            />
+          </View>
+          {
+            this.state.showSpinner
+            &&
+            <View style={styles.guestButton}>
               <Spinner style={[styles.guestButtonText]} size={"small"}/>
-            }
-            {
-              !this.state.showSpinner
-              &&
-              <Text style={[styles.guestButtonText,{color: '#fff', backgroundColor: '#6bdbfd', fontWeight:'bold'}]}>SUBMIT</Text>
-            }
-          </TouchableOpacity>
+            </View>
+          }
+          {
+            !this.state.showSpinner
+            &&
+            <TouchableOpacity
+              onPress={()=>this.submitOtp()}
+              style={styles.signOutBlock}
+            >
+              <Text style={styles.signOutText}>SUBMIT</Text>
+            </TouchableOpacity>
+          }
         </View>
       );
     }
     if (this.state.enterPasswordView) {
       return(
         <View style={[styles.mainBlock,{alignItems: 'center', alignSelf: 'center'}]}>
-          <View style={{height:30}}>
-            {
-              this.state.error
-              &&
-              <Text style={[{color:"red", marginTop:15}]}>{this.state.errorMessage}</Text>
-            }
+          <View style={styles.loginBlock}>
+            <TextInput
+              style={[styles.loginInput, {paddingLeft: 20}]}
+              textInputStyle={[styles.textInputTextStyle]}
+              tintColor={"#7f8c8d"}
+              placeholderTextColor ={"#7f8c8d"}
+              placeholder="Enter password"
+              secureTextEntry={true}
+              placeholderTextColor ={"#7f8c8d"}
+              value={this.state.password}
+              onChangeText={(pass) => this.setState({password:pass, error:false})}
+              onFocus={()=>this.setState({password:''})}
+              onSubmitEditing={() => this.submitPass()}
+            />
           </View>
-          <TextInput
-            style={{ height: 48, width: width * 0.75, margin: 8, paddingLeft:5 }}
-            textInputStyle={[styles.textInputTextStyle]}
-            tintColor={"#7f8c8d"}
-            placeholderTextColor ={"#7f8c8d"}
-            placeholder="Enter password"
-            secureTextEntry={true}
-            placeholderTextColor ={"#7f8c8d"}
-            value={this.state.password}
-            onChangeText={(pass) => this.setState({password:pass, error:false})}
-            onFocus={()=>this.setState({password:''})}
-            onSubmitEditing={() => this.submitPass()}
-          />
           <TouchableOpacity
               disabled={this.state.disableBtn}
               onPress={()=>this.gotoForgotPassword()}
           >
             <Text style={styles.forgotPassword} >Forgot password?</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={()=>this.submitPass()}
-            style={[styles.guestButton,{marginTop:25}]}
-            >
-            {
-              this.state.showSpinner
-              &&
+          {
+            this.state.showSpinner
+            &&
+            <View style={styles.guestButton}>
               <Spinner style={[styles.guestButtonText]} size={"small"}/>
-            }
-            {
-              !this.state.showSpinner
-              &&
-              <Text style={[styles.guestButtonText,{color: '#fff', backgroundColor:'#6bdbfd', fontWeight: 'bold'}]}>SUBMIT</Text>
-            }
-          </TouchableOpacity>
+            </View>
+          }
+          {
+            !this.state.showSpinner
+            &&
+            <TouchableOpacity
+              onPress={()=>this.submitPass()}
+              style={styles.signOutBlock}
+              >
+                <Text style={styles.signOutText}>SUBMIT</Text>
+            </TouchableOpacity>
+          }
+
         </View>
       );
     }
     return(
       <View style={[styles.mainBlock,{alignItems: 'center', alignSelf: 'center'}]}>
-      <View style={{height:30}}>
-        {
-          this.state.error
-          &&
-          <Text style={[{color:"#e74c3c", marginTop:15}]}>{this.state.errorMessage}</Text>
-        }
-      </View>
-        <View style={{flexDirection: 'row', alignItems:'center',justifyContent: "center"}}>
-          <Text style={styles.phoneCountryCode}>+91</Text>
-          <TextInput
-            style={{ height: 48, width: width * 0.75, margin: 8, paddingLeft:5 }}
-            textInputStyle={styles.textInputTextStyle}
-            tintColor={"#7f8c8d"}
-            placeholderTextColor ={"#7f8c8d"}
-            placeholder="Enter mobile number"
-            keyboardType={"phone-pad"}
-            value={this.state.number}
-            onChangeText={(num) => this.setState({number:num, error:false})}
-            // onFocus={()=>this.setState({number:''})}
-            onSubmitEditing={() => this.validatePhone(this.state.number)}
-          />
+        <View>
+          <View style={styles.loginBlock}>
+            <Text style={styles.phoneCountryCode}>+91</Text>
+            <TextInput
+              style={styles.loginInput}
+              textInputStyle={styles.textInputTextStyle}
+              tintColor={"#7f8c8d"}
+              placeholderTextColor ={"#7f8c8d"}
+              placeholder="Enter mobile number"
+              keyboardType={"phone-pad"}
+              value={this.state.number}
+              onChangeText={(num) => this.setState({number:num, error:false})}
+              onSubmitEditing={() => this.validatePhone(this.state.number)}
+            />
+          </View>
         </View>
 
-        <TouchableOpacity
-          onPress={()=>this.validatePhone(this.state.number)}
-          disabled={this.state.disableBtn}
-          style={[styles.guestButton,{marginTop:25}, { borderColor: 'transparent'}]}>
-          {
-            this.state.showSpinner
-            &&
+        {
+          this.state.showSpinner
+          &&
+          <View style={styles.guestButton} >
             <Spinner style={[styles.guestButtonText]} size={"small"}/>
-          }
-          {
-            !this.state.showSpinner
-            &&
-            <Text style={[styles.guestButtonText,{color: '#fff', backgroundColor:'#6bdbfd', fontWeight: 'bold' }]}>SUBMIT</Text>
-          }
-        </TouchableOpacity>
+          </View>
+        }
+        {
+          !this.state.showSpinner
+          &&
+          <TouchableOpacity
+            onPress={()=>this.validatePhone(this.state.number)}
+            disabled={this.state.disableBtn}
+            style={[styles.signOutBlock]}
+          >
+            <Text style={[styles.signOutText]}>SUBMIT</Text>
+          </TouchableOpacity>
+        }
       </View>
     );
   }
