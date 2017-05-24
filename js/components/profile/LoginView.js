@@ -27,10 +27,13 @@ class LoginView extends Component {
       errorMessage: ""
     }
   }
+
+
   componentWillReceiveProps(nextProps){
     const loginObject = nextProps.login;
     // console.log("the loginObject is", loginObject);
     const registerObject = nextProps.register;
+    // console.log("the loginObject is", nextProps);
     if (loginObject.requestingAvailabilty) {
       this.setState({
         showSpinner:true,
@@ -52,7 +55,7 @@ class LoginView extends Component {
          showSpinner: false,
          errorMessage: "Invalid credentials"
        })
-      //  this.dropdown.alertWithType('error', 'Error', "Invalid credentials");
+      //this.dropdown.alertWithType('error', 'Error', "Invalid credentials");
       //  console.log("invalid credentials");
 
     }

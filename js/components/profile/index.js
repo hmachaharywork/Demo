@@ -91,12 +91,12 @@ class Profile extends Component {
           </View>
           <View style={styles.bottomGuest}>
             <TouchableOpacity
-              onPress={()=>this.props.navigation.navigate('Login')}
+              onPress={()=>this.setState({showLoginView:true})}
               style={[styles.guestButton,{marginRight:22,}]}>
               <Text style={[styles.guestButtonText,{color: '#0ACED4', fontFamily: 'Helvetica', }]}>LOGIN</Text>
             </TouchableOpacity>
              <TouchableOpacity
-              onPress={()=>this.props.navigation.navigate('Login')}
+              onPress={()=>this.setState({showLoginView:true})}
               style={[styles.guestButton,{marginLeft:22,}]}>
               <Text style={[styles.guestButtonText,{fontFamily: 'Helvetica', color: "#0ACED4"}]}>SIGN UP</Text>
             </TouchableOpacity>
@@ -153,7 +153,9 @@ class Profile extends Component {
   }
 
   render(){
-
+    if (this.state.showLoginView) {
+      return <LoginView navigation={this.props.navigation} hideLoginView={()=>this.setState({showLoginView:false})}/>
+    }
     return(
       <View style={styles.container}>
         <View style={styles.topbar}>
